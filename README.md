@@ -54,7 +54,7 @@ Without the key, the ranking, map, brief and comparison still work; only Ask the
 
 ## Team
 
-Danyib Núñez Rivera, Edanice, Deniel, Ian — Puerto Rico.
+Danyib Núñez Rivera — Puerto Rico.
 
 ## License
 
