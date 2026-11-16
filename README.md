@@ -5,7 +5,7 @@
 An SI-powered web dashboard that turns NASA's microgravity combustion experiments (Physical Sciences Informatics, PSI) into fire-safety answers for a specific crew habitat.
 
 
-**Live demo:** https://free-fall-fire-atlas.vercel.app · **Overview (PDF):** [docs/FreeFallFireAtlas_LinkedIn.pdf](docs/FreeFallFireAtlas_LinkedIn.pdf) · **30-second demo:** [video/FreeFallFireAtlas_30s.mp4](video/FreeFallFireAtlas_30s.mp4)
+**Live demo:** https://free-fall-fire-atlas.vercel.app · **Overview (PDF):** [docs/FreeFallFireAtlas_LinkedIn.pdf](docs/FreeFallFireAtlas_LinkedIn.pdf)
 
 ![Pressurized Rover: 34% O2 and zero solid-fuel coverage](docs/rover_gap.png)
 

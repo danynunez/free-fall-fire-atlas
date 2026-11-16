@@ -2,3 +2,5 @@ node_modules
 .vercel
 .env*
 .DS_Store
+video/*
+!video/FreeFallFireAtlas_30s.mp4
