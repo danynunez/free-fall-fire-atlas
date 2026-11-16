@@ -21,6 +21,10 @@ NASA has decades of fire experiments from the ISS and the Cygnus vehicle, but th
 
 At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressure* is almost identical to Earth's, so it breathes like normal air. But the oxygen *fraction* is about 44% higher, and material flammability generally rises with oxygen concentration, with the size of the effect depending on material and pressure. ACME BRE showed emulated fuels self-extinguish in still air below about 25% O₂ yet burn for minutes above it, so oxygen-rich habitats lose the quiescent safety margin. The large-scale Saffire-IV–VI burns reach only about 29–31% O₂ at reduced pressure, and no solid-material data yet covers the 34% O₂ / 8.2 psia exploration atmosphere planned for rovers. That is the clearest gap between the data NASA has and the habitats NASA is building.
 
+## PSI linkage
+
+19 of the 20 investigation records are matched to their accession in NASA's PSI repository (BASS PSI-26, BASS-II PSI-25, Saffire-I/II/III PSI-98/99/100, SAME PSI-102, SAME-R PSI-101, DAFT PSI-47, FLEX PSI-69, FLEX-2 PSI-68, CFI PSI-39, ACME BRE PSI-20, CFI-G PSI-159, E-FIELD PSI-22, CLD PSI-21, Flame Design PSI-10, s-Flame PSI-23, SPICE PSI-107, SLICE PSI-106), retrieved from PSI's public investigation index. Saffire-IV–VI is not in PSI and comes from NASA technical reports. Each dashboard record links to its PSI page. Test-level PSI data files were not downloaded during the hackathon; that is the next step.
+
 ## How the SI works
 
 - **Structured extraction layer:** each investigation is a record with objectives, fuels and geometry, O₂ range, pressure, airflow, hardware, measurements, a plain-language finding, an Earth application, and a confidence flag (`data/investigations.json`).

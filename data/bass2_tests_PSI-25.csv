@@ -1,0 +1,130 @@
+test_id,material_class,initial_o2_pct_vol,o2_drop_pct_vol
+B1,PMMA thin film (0.1-0.4 mm),22.2,0.0
+B2,PMMA thin film (0.1-0.4 mm),22.2,
+B3,PMMA thin film (0.1-0.4 mm),22.2,0.4
+B4,PMMA thin film (0.1-0.4 mm),22.2,0.0
+B5,PMMA thin film (0.1-0.4 mm),22.2,0.3
+B6,PMMA thick sample / rod / sphere,21,0.1
+B7,PMMA thin film (0.1-0.4 mm),22.2,0.1
+B8,PMMA thick sample / rod / sphere,21,0.5
+B9,PMMA thick sample / rod / sphere,21,0.1
+B10,PMMA thick sample / rod / sphere,21,0.2
+B11,PMMA thick sample / rod / sphere,21,0.3
+B12,PMMA thin film (0.1-0.4 mm),22.2,0.1
+B13,PMMA thick sample / rod / sphere,21,0.5
+B14,PMMA thin film (0.1-0.4 mm),15,
+B15,PMMA thick sample / rod / sphere,21,0.2
+B16,PMMA thin film (0.1-0.4 mm),17.3,0.1
+B17,PMMA thin film (0.1-0.4 mm),17.5,0.1
+B18,PMMA thin film (0.1-0.4 mm),17.4,0.0
+B19,PMMA thin film (0.1-0.4 mm),17.3,0.1
+B20,PMMA thin film (0.1-0.4 mm),17.4,0.0
+B21,PMMA thin film (0.1-0.4 mm),20.8,0.2
+B22,PMMA thin film (0.1-0.4 mm),20.7,0.2
+F1,Nomex,22.2,0.0
+F2,Nomex,21,0.0
+F3,Nomex,21.7,
+F4,Wax candle,17.4,0.0
+M1,PMMA thick sample / rod / sphere,22.2,0.3
+M2,PMMA thick sample / rod / sphere,22.2,1.0
+M3,PMMA thick sample / rod / sphere,20.8,1.1
+M4,PMMA thick sample / rod / sphere,21.8,2.0
+M5,PMMA thick sample / rod / sphere,22.2,3.2
+M6,PMMA thick sample / rod / sphere,21.8,1.1
+M7,PMMA thick sample / rod / sphere,18.9,0.5
+M8,PMMA thick sample / rod / sphere,19.1,0.9
+M9,PMMA thick sample / rod / sphere,18,0.4
+M10,PMMA thick sample / rod / sphere,20.1,1.5
+M11,PMMA thick sample / rod / sphere,20,1.5
+M12,PMMA thick sample / rod / sphere,21.7,1.3
+M13,PMMA thick sample / rod / sphere,20.8,1.8
+M14,PMMA thick sample / rod / sphere,22.2,0.6
+M15,PMMA thick sample / rod / sphere,21,1.0
+M16,PMMA thick sample / rod / sphere,19.2,0.5
+M17,PMMA thick sample / rod / sphere,18.8,1.7
+M18,PMMA thick sample / rod / sphere,17.9,1.1
+M19,PMMA thick sample / rod / sphere,19,1.6
+M20,PMMA thick sample / rod / sphere,18,0.6
+O1,PMMA thick sample / rod / sphere,22.2,0.5
+O2,PMMA thick sample / rod / sphere,22.2,0.3
+O3a,PMMA thick sample / rod / sphere,18,0.0
+O3b,PMMA thick sample / rod / sphere,18,0.3
+O4,PMMA thick sample / rod / sphere,14.8,1.2
+O5a,PMMA thick sample / rod / sphere,15.1,0.9
+O5b,PMMA thick sample / rod / sphere,14.2,0.1
+O6,PMMA thick sample / rod / sphere,16.7,0.7
+O7,PMMA thick sample / rod / sphere,16,0.5
+O8a,PMMA thick sample / rod / sphere,15.7,0.4
+O8b,PMMA thick sample / rod / sphere,15.5,0.3
+O9,PMMA thick sample / rod / sphere,15,0.2
+O10,PMMA thick sample / rod / sphere,16.7,0.6
+O11,PMMA thick sample / rod / sphere,15.4,0.6
+O12,PMMA thick sample / rod / sphere,13.6,0.1
+O13a,PMMA thick sample / rod / sphere,15.9,1.3
+O13b,PMMA thick sample / rod / sphere,14.6,0.2
+O14,PMMA thick sample / rod / sphere,16.3,1.0
+O15a,PMMA thick sample / rod / sphere,17.1,0.4
+O15b,PMMA thick sample / rod / sphere,16.7,1.1
+O16,PMMA thick sample / rod / sphere,14.5,0.0
+O17,PMMA thick sample / rod / sphere,15.1,0.8
+O18,PMMA thick sample / rod / sphere,15.2,0.7
+O19,PMMA thick sample / rod / sphere,15.3,0.7
+O20,PMMA thick sample / rod / sphere,16.5,0.6
+O21,PMMA thick sample / rod / sphere,15.9,0.5
+O22,PMMA thick sample / rod / sphere,15.4,0.5
+P1,PMMA thick sample / rod / sphere,17.7,0.2
+P2,PMMA thick sample / rod / sphere,17.4,0.2
+P3a,PMMA thick sample / rod / sphere,17.7,0.3
+P3b,PMMA thick sample / rod / sphere,17.4,0.6
+P4,PMMA thick sample / rod / sphere,18.5,1.4
+P5,PMMA thick sample / rod / sphere,19.3,1.7
+P6,PMMA thick sample / rod / sphere,18.9,0.4
+P8,PMMA thick sample / rod / sphere,16.4,0.1
+P9,PMMA thick sample / rod / sphere,17.6,0.5
+P10,PMMA thick sample / rod / sphere,17,0.6
+P12,PMMA thick sample / rod / sphere,17.5,0.7
+P13a,PMMA thick sample / rod / sphere,20.7,1.6
+P13b,PMMA thick sample / rod / sphere,20.6,0.4
+P14,PMMA thick sample / rod / sphere,18.4,0.4
+P15,PMMA thick sample / rod / sphere,18,0.5
+P16,PMMA thick sample / rod / sphere,18.2,0.8
+P17,PMMA thick sample / rod / sphere,16.8,0.3
+P18,PMMA thick sample / rod / sphere,20,1.0
+P19,PMMA thick sample / rod / sphere,17.5,0.8
+P20,PMMA thick sample / rod / sphere,19,0.8
+P21a,PMMA thick sample / rod / sphere,16.3,0.0
+P21b,PMMA thick sample / rod / sphere,16.3,0.0
+P22a,PMMA thick sample / rod / sphere,20.8,
+P22b,PMMA thick sample / rod / sphere,20,
+P23,PMMA thick sample / rod / sphere,18.2,1.2
+P24,PMMA thick sample / rod / sphere,19,1.5
+P25,PMMA thick sample / rod / sphere,20.9,0.7
+T1,SIBAL cotton-fiberglass fabric,18.5,0.0
+T2,SIBAL cotton-fiberglass fabric,18.5,0.0
+T3,PMMA thick sample / rod / sphere,17.2,0.4
+T4,SIBAL cotton-fiberglass fabric,18.7,0.0
+T5,SIBAL cotton-fiberglass fabric,18.8,-0.1
+T6,SIBAL cotton-fiberglass fabric,18.8,0.0
+T7,PMMA thick sample / rod / sphere,17.3,0.2
+T9,SIBAL cotton-fiberglass fabric,16.4,0.0
+T10,SIBAL cotton-fiberglass fabric,16.4,-0.1
+T11,SIBAL cotton-fiberglass fabric,17.1,0.1
+T12,SIBAL cotton-fiberglass fabric,16.8,-0.1
+T13,SIBAL cotton-fiberglass fabric,17.5,-0.1
+T14,SIBAL cotton-fiberglass fabric,16.9,0.0
+T15,SIBAL cotton-fiberglass fabric,18.7,0.0
+T16,SIBAL cotton-fiberglass fabric,17.6,0.1
+T17,SIBAL cotton-fiberglass fabric,16.9,0.0
+T18,SIBAL cotton-fiberglass fabric,17.4,0.0
+T19,SIBAL cotton-fiberglass fabric,17.2,0.0
+T20,SIBAL cotton-fiberglass fabric,17.2,0.0
+T21,SIBAL cotton-fiberglass fabric,17.2,0.0
+T22,SIBAL cotton-fiberglass fabric,17.1,0.1
+T23,SIBAL cotton-fiberglass fabric,17.2,-0.1
+T24,SIBAL cotton-fiberglass fabric,18.2,0.0
+T25,SIBAL cotton-fiberglass fabric,20.8,0.1
+T26,SIBAL cotton-fiberglass fabric,20.8,0.1
+T27,SIBAL cotton-fiberglass fabric,20.7,0.1
+T28a,SIBAL cotton-fiberglass fabric,20.7,
+T28b,SIBAL cotton-fiberglass fabric,20.7,
+T29,SIBAL cotton-fiberglass fabric,20.7,0.2

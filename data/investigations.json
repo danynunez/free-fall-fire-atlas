@@ -36,7 +36,9 @@
    "Nitrogen jet suppression of burning solids"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20150008962/downloads/20150008962.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-26",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
  },
  {
   "id": "BASS-II",
@@ -47,8 +49,8 @@
   "phase": "solid",
   "fuels": "PMMA, cotton‑fiberglass fabric and other thin solids",
   "o2": [
-   14,
-   21
+   13.6,
+   22.2
   ],
   "p": [
    1,
@@ -64,9 +66,9 @@
    "detection": 0.2,
    "suppression": 0.6
   },
-  "finding": "Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
+  "finding": "PSI‑25 experimental table: 130 ISS tests by six PI teams on PMMA films, rods and slabs, SIBAL fabric, Nomex and wax, at 13.6–22.2% initial O₂. Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
   "earth": "Extends limiting‑oxygen data used in material selection.",
-  "conf": "≈",
+  "conf": "PSI",
   "tests": {
    "varied": "O₂ lowered by N₂ dilution; airflow from near 0 up to about 53 cm/s",
    "fixed": "MSG flow duct, ~1 atm"
@@ -76,7 +78,9 @@
    "Ventilation shutdown during fire response (tested conditions)"
   ],
   "source": "https://ntrs.nasa.gov/citations/20160000593",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Test‑level values from the PSI experimental table",
+  "psi": "PSI-25",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
  },
  {
   "id": "SAF1",
@@ -112,7 +116,9 @@
    "Cabin O₂ / CO₂ change as an early fire signature"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-98",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
  },
  {
   "id": "SAF2",
@@ -152,7 +158,9 @@
    "Material screening at exploration atmospheres"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20160010292/downloads/20160010292.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-99",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
  },
  {
   "id": "SAF3",
@@ -188,7 +196,9 @@
    "Cabin O₂ / CO₂ change as an early fire signature"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-100",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
  },
  {
   "id": "SAF46",
@@ -228,7 +238,9 @@
    "Material screening at exploration atmospheres"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20240002981/downloads/Saffire-ICES-2024-ICES-365-accepted%20final.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": null,
+  "psi_url": null
  },
  {
   "id": "SAME",
@@ -268,7 +280,9 @@
    "False‑alarm rejection against cabin and lunar dust"
   ],
   "source": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-102",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
  },
  {
   "id": "SAMER",
@@ -307,7 +321,9 @@
    "Smoke detectors sized for larger microgravity smoke particles"
   ],
   "source": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-101",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
  },
  {
   "id": "DAFT",
@@ -342,7 +358,9 @@
    "False‑alarm rejection against cabin and lunar dust"
   ],
   "source": "https://psi.nasa.gov",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-47",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
  },
  {
   "id": "FLEX",
@@ -382,7 +400,9 @@
    "Post‑extinction monitoring for cool flames and re‑ignition"
   ],
   "source": "https://link.springer.com/doi/10.1007/s12217-014-9372-2",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-69",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
  },
  {
   "id": "FLEX2",
@@ -415,7 +435,9 @@
   "conf": "≈",
   "equipment": [],
   "source": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-68",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
  },
  {
   "id": "CFI",
@@ -450,7 +472,9 @@
    "Post‑extinction monitoring for cool flames and re‑ignition"
   ],
   "source": "https://psi.nasa.gov",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-39",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
  },
  {
   "id": "BRE",
@@ -490,7 +514,9 @@
    "Material screening at exploration atmospheres"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
-  "data_status": "Reported in NASA technical reports"
+  "data_status": "Reported in NASA technical reports",
+  "psi": "PSI-20",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
  },
  {
   "id": "CFIG",
@@ -523,7 +549,9 @@
   "conf": "challenge",
   "equipment": [],
   "source": "https://science.nasa.gov/mission/acme",
-  "data_status": "Stated in the Space Apps challenge brief"
+  "data_status": "Stated in the Space Apps challenge brief",
+  "psi": "PSI-159",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
  },
  {
   "id": "EFIELD",
@@ -557,7 +585,9 @@
   "pg": true,
   "equipment": [],
   "source": "https://science.nasa.gov/mission/acme",
-  "data_status": "Stated in the Space Apps challenge brief"
+  "data_status": "Stated in the Space Apps challenge brief",
+  "psi": "PSI-22",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
  },
  {
   "id": "CLD",
@@ -596,7 +626,9 @@
    "Smoke‑point limits for flame emissions"
   ],
   "source": "https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-21",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
  },
  {
   "id": "FD",
@@ -629,7 +661,9 @@
   "conf": "≈",
   "equipment": [],
   "source": "https://science.nasa.gov/mission/acme",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-10",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
  },
  {
   "id": "SFL",
@@ -662,7 +696,9 @@
   "conf": "≈",
   "equipment": [],
   "source": "https://science.nasa.gov/mission/acme",
-  "data_status": "Estimated envelope, not yet checked against PSI"
+  "data_status": "Estimated envelope, not yet checked against PSI",
+  "psi": "PSI-23",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
  },
  {
   "id": "SPICE",
@@ -697,7 +733,9 @@
    "Smoke‑point limits for flame emissions"
   ],
   "source": "https://issnationallab.org/?p=42222",
-  "data_status": "Stated in the Space Apps challenge brief"
+  "data_status": "Stated in the Space Apps challenge brief",
+  "psi": "PSI-107",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
  },
  {
   "id": "SLICE",
@@ -730,6 +768,8 @@
   "conf": "challenge",
   "equipment": [],
   "source": "https://issnationallab.org/?p=42222",
-  "data_status": "Stated in the Space Apps challenge brief"
+  "data_status": "Stated in the Space Apps challenge brief",
+  "psi": "PSI-106",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
  }
 ]

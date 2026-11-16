@@ -152,7 +152,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
       <label><input type="checkbox" name="pillar" value="detection"> Detection</label>
       <label><input type="checkbox" name="pillar" value="suppression"> Suppression</label></div></fieldset>
   </div>
-  <div class="promo"><span class="pill">Open data</span><b>Structured PSI records</b><span style="color:var(--muted)">20 investigation‑level records with sources, in one JSON file.</span><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">Open dataset</a></div>
+  <div class="promo"><span class="pill">Open data</span><b>Matched to 19 PSI records</b><span style="color:var(--muted)">19 of 20 records link to their PSI accession page; Saffire‑IV–VI is NTRS only.</span><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">Open dataset</a></div>
  </aside>
 
  <main>
@@ -209,6 +209,13 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
     <div id="equip" class="brief"></div>
    </section>
   </div>
+
+  <section class="card" aria-labelledby="tlh">
+    <div class="row"><h2 id="tlh">Test‑level data · BASS‑II</h2><span class="note">PSI‑25 experimental table · 129 ISS tests</span></div>
+    <p class="note" id="tltxt"></p>
+    <div class="svgbox"><svg id="tl" viewBox="0 0 900 230" role="img" aria-label="Initial oxygen of each BASS-II test by material, with habitat oxygen marked"></svg></div>
+    <div class="legend"><span>Each dot is one test. Dot size = O₂ drop during the test (larger = more oxygen consumed).</span><a href="data/bass2_tests_PSI-25.csv" target="_blank" rel="noopener">Download the 129 tests (CSV)</a><a href="https://psi.nasa.gov/physci/repo/data/investigations/PSI-25" target="_blank" rel="noopener">Source: PSI‑25</a></div>
+  </section>
   <section class="card" aria-labelledby="askh">
     <div class="row"><h2 id="askh">Ask the Atlas</h2><span class="note" id="askModel">Claude · answers cite the records</span></div>
     <form id="askForm" class="askrow"><input id="askQ" type="text" autocomplete="off" placeholder="Which fabrics have burned in microgravity, and at what airflow?" aria-label="Question for the atlas"><button type="submit" id="askBtn">Ask</button></form>
@@ -234,7 +241,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
  </main>
 </div>
 <footer>
-  <div><b>Data.</b> Records compiled from NASA Physical Sciences Informatics (<a href="https://psi.nasa.gov" target="_blank" rel="noopener">psi.nasa.gov</a>), NASA Technical Reports and the Space Apps 2026 “Flame in Free Fall” brief. Records marked NTRS were checked against technical reports; ≈ marks approximate envelopes. Saffire‑IV–VI comes from NTRS and may not yet be in PSI.</div>
+  <div><b>Data.</b> 19 of 20 records are matched to their NASA Physical Sciences Informatics accession (<a href="https://psi.nasa.gov/physci/repo/search" target="_blank" rel="noopener">psi.nasa.gov</a>), via PSI's public investigation index, plus, NASA Technical Reports and the Space Apps 2026 “Flame in Free Fall” brief. Records marked NTRS were checked against technical reports; ≈ marks approximate envelopes. Saffire‑IV–VI comes from NTRS and may not yet be in PSI.</div>
   <div><b>Scope.</b> PSI holds no partial‑gravity combustion data yet (LUCI and FM2 expected). Lunar and Mars behaviour cannot be directly extrapolated from microgravity or 1 g results. Rocket propellant fires are out of scope.</div>
 </footer>
 <script>
@@ -245,10 +252,10 @@ const INV = [
   finding:"Concurrent flame growth over fabric at 21% O₂ and 5–19 cm/s airflow; flames were most sensitive to flow at the lowest speeds.",
   earth:"Informs flame‑spread models used for materials screening.",conf:"NTRS"},
  {id:"BASS-II",name:"BASS‑II",full:"Burning and Suppression of Solids II",hw:"MSG · SPICE flow duct",yrs:"2012–13",phase:"solid",
-  fuels:"PMMA, cotton‑fiberglass fabric and other thin solids",o2:[14,21],p:[1,1],flow:[0,53],
+  fuels:"PMMA, cotton‑fiberglass fabric and other thin solids",o2:[13.6,22.2],p:[1,1],flow:[0,53],
   meas:"Video, flame spread, flammability limits at reduced O₂",pil:{prevention:1,detection:.2,suppression:.6},
-  finding:"Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
-  earth:"Extends limiting‑oxygen data used in material selection.",conf:"≈"},
+  finding:"PSI‑25 experimental table: 130 ISS tests by six PI teams on PMMA films, rods and slabs, SIBAL fabric, Nomex and wax, at 13.6–22.2% initial O₂. Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
+  earth:"Extends limiting‑oxygen data used in material selection.",conf:"PSI"},
  {id:"SAF1",name:"Saffire‑I",full:"Spacecraft Fire Safety Demonstration I",hw:"Cygnus vehicle, after ISS departure",yrs:"2016",phase:"solid",
   fuels:"SIBAL fabric (75% cotton, 25% fiberglass), 0.4 × 0.95 m",o2:[21,21],p:[1,1],flow:[20,20],
   meas:"Video, radiometers, thermocouples, cabin O₂ and CO₂ change",pil:{prevention:1,detection:.6,suppression:.2},
@@ -376,8 +383,10 @@ const SRC={
  "CFIG":"https://science.nasa.gov/mission/acme","EFIELD":"https://science.nasa.gov/mission/acme","FD":"https://science.nasa.gov/mission/acme","SFL":"https://science.nasa.gov/mission/acme",
  "SPICE":"https://issnationallab.org/?p=42222","SLICE":"https://issnationallab.org/?p=42222"
 };
-const STATUS={"NTRS":"Reported in NASA technical reports","≈":"Estimated envelope, not yet checked against PSI","challenge":"Stated in the Space Apps challenge brief"};
+const STATUS={"PSI":"Test‑level values from the PSI experimental table","NTRS":"Reported in NASA technical reports","≈":"Estimated envelope, not yet checked against PSI","challenge":"Stated in the Space Apps challenge brief"};
 INV.forEach(i=>{i.source=SRC[i.id]||"https://psi.nasa.gov";i.data_status=STATUS[i.conf]});
+const PSI={"BASS":"PSI-26","BASS-II":"PSI-25","SAF1":"PSI-98","SAF2":"PSI-99","SAF3":"PSI-100","SAME":"PSI-102","SAMER":"PSI-101","DAFT":"PSI-47","FLEX":"PSI-69","FLEX2":"PSI-68","CFI":"PSI-39","BRE":"PSI-20","CFIG":"PSI-159","EFIELD":"PSI-22","CLD":"PSI-21","FD":"PSI-10","SFL":"PSI-23","SPICE":"PSI-107","SLICE":"PSI-106"};
+INV.forEach(i=>{i.psi=PSI[i.id]||null;i.psi_url=i.psi?`https://psi.nasa.gov/physci/repo/data/investigations/${i.psi}`:null});
 const PRESETS = [
  {k:"iss",n:"ISS / Orion",o2:21,p:14.7,flow:15,g:"0",note:"Earth‑like cabin air"},
  {k:"moon",n:"Moon Base",o2:30,p:10.2,flow:10,g:"0.166",note:"Challenge brief: ≥30% O₂ at ≤10.2 psi"},
@@ -432,7 +441,7 @@ function renderList(R){
    <article class="inv ${i===0?"top":""}">
      <div class="inv-head">
        <div class="rank">${String(i+1).padStart(2,"0")}</div>
-       <div style="min-width:0"><h3>${r.name}</h3><div class="sub">${r.full} · ${r.yrs}</div></div>
+       <div style="min-width:0"><h3>${r.name}</h3><div class="sub">${r.full} · ${r.yrs}${r.psi?` · ${r.psi}`:" · NTRS only"}</div></div>
        <div class="score">${Math.round(r.s*100)}</div>
      </div>
      <div class="bar"><i style="width:${Math.round(r.s*100)}%"></i></div>
@@ -441,7 +450,7 @@ function renderList(R){
        <dl><dt>Hardware</dt><dd>${r.hw}</dd><dt>Fuels</dt><dd>${r.fuels}</dd>
        <dt>O₂</dt><dd>${r.conf==="≈"?"≈ ":""}${r.o2[0]}–${r.o2[1]}%</dd>
        <dt>Airflow</dt><dd>${r.conf==="≈"?"≈ ":""}${r.flow[0]}–${r.flow[1]} cm/s</dd>
-       <dt>Measured</dt><dd>${r.meas}</dd>${r.tests?`<dt>Varied</dt><dd>${r.tests.varied}</dd><dt>Held fixed</dt><dd>${r.tests.fixed}</dd>`:`<dt>Tests</dt><dd>Test‑by‑test matrix: see the study's PSI page</dd>`}${r.equipment.length?`<dt>Informs</dt><dd>${r.equipment.join("; ")}</dd>`:""}<dt>Data status</dt><dd>${r.data_status}</dd><dt>Finding</dt><dd>${r.finding}</dd><dt>Source</dt><dd><a href="${r.source}" target="_blank" rel="noopener">Primary NASA source</a></dd><dt>On Earth</dt><dd>${r.earth}</dd></dl>
+       <dt>Measured</dt><dd>${r.meas}</dd>${r.tests?`<dt>Varied</dt><dd>${r.tests.varied}</dd><dt>Held fixed</dt><dd>${r.tests.fixed}</dd>`:`<dt>Tests</dt><dd>Test‑by‑test matrix: see the study's PSI page</dd>`}${r.equipment.length?`<dt>Informs</dt><dd>${r.equipment.join("; ")}</dd>`:""}<dt>Data status</dt><dd>${r.data_status}</dd><dt>Finding</dt><dd>${r.finding}</dd><dt>PSI record</dt><dd>${r.psi?`<a href="${r.psi_url}" target="_blank" rel="noopener">${r.psi} on psi.nasa.gov</a>`:"Not in PSI (NASA technical reports only)"}</dd><dt>Source</dt><dd><a href="${r.source}" target="_blank" rel="noopener">Primary NASA paper</a></dd><dt>On Earth</dt><dd>${r.earth}</dd></dl>
      </details>
      <label class="cmp"><input type="checkbox" data-cmp="${r.id}" ${picked.has(r.id)?"checked":""}> Compare</label>
    </article>`).join("");
@@ -681,5 +690,28 @@ render(); requestAnimationFrame(tick); addEventListener("resize",()=>renderStage
     const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="free-fall-fire-atlas.csv";document.body.appendChild(a);a.click();a.remove();
   };
   const base=render; render=function(){base();renderModel()}; render();
+})();
+</script>
+<script>
+const BASS2=[["B1","p",22.2,0.0],["B2","p",22.2,null],["B3","p",22.2,0.4],["B4","p",22.2,0.0],["B5","p",22.2,0.3],["B6","r",21.0,0.1],["B7","p",22.2,0.1],["B8","r",21.0,0.5],["B9","r",21.0,0.1],["B10","r",21.0,0.2],["B11","r",21.0,0.3],["B12","p",22.2,0.1],["B13","r",21.0,0.5],["B14","p",15.0,null],["B15","r",21.0,0.2],["B16","p",17.3,0.1],["B17","p",17.5,0.1],["B18","p",17.4,0.0],["B19","p",17.3,0.1],["B20","p",17.4,0.0],["B21","p",20.8,0.2],["B22","p",20.7,0.2],["F1","n",22.2,0.0],["F2","n",21.0,0.0],["F3","n",21.7,null],["F4","w",17.4,0.0],["M1","r",22.2,0.3],["M2","r",22.2,1.0],["M3","r",20.8,1.1],["M4","r",21.8,2.0],["M5","r",22.2,3.2],["M6","r",21.8,1.1],["M7","r",18.9,0.5],["M8","r",19.1,0.9],["M9","r",18.0,0.4],["M10","r",20.1,1.5],["M11","r",20.0,1.5],["M12","r",21.7,1.3],["M13","r",20.8,1.8],["M14","r",22.2,0.6],["M15","r",21.0,1.0],["M16","r",19.2,0.5],["M17","r",18.8,1.7],["M18","r",17.9,1.1],["M19","r",19.0,1.6],["M20","r",18.0,0.6],["O1","r",22.2,0.5],["O2","r",22.2,0.3],["O3a","r",18.0,0.0],["O3b","r",18.0,0.3],["O4","r",14.8,1.2],["O5a","r",15.1,0.9],["O5b","r",14.2,0.1],["O6","r",16.7,0.7],["O7","r",16.0,0.5],["O8a","r",15.7,0.4],["O8b","r",15.5,0.3],["O9","r",15.0,0.2],["O10","r",16.7,0.6],["O11","r",15.4,0.6],["O12","r",13.6,0.1],["O13a","r",15.9,1.3],["O13b","r",14.6,0.2],["O14","r",16.3,1.0],["O15a","r",17.1,0.4],["O15b","r",16.7,1.1],["O16","r",14.5,0.0],["O17","r",15.1,0.8],["O18","r",15.2,0.7],["O19","r",15.3,0.7],["O20","r",16.5,0.6],["O21","r",15.9,0.5],["O22","r",15.4,0.5],["P1","r",17.7,0.2],["P2","r",17.4,0.2],["P3a","r",17.7,0.3],["P3b","r",17.4,0.6],["P4","r",18.5,1.4],["P5","r",19.3,1.7],["P6","r",18.9,0.4],["P8","r",16.4,0.1],["P9","r",17.6,0.5],["P10","r",17.0,0.6],["P12","r",17.5,0.7],["P13a","r",20.7,1.6],["P13b","r",20.6,0.4],["P14","r",18.4,0.4],["P15","r",18.0,0.5],["P16","r",18.2,0.8],["P17","r",16.8,0.3],["P18","r",20.0,1.0],["P19","r",17.5,0.8],["P20","r",19.0,0.8],["P21a","r",16.3,0.0],["P21b","r",16.3,0.0],["P22a","r",20.8,null],["P22b","r",20.0,null],["P23","r",18.2,1.2],["P24","r",19.0,1.5],["P25","r",20.9,0.7],["T1","f",18.5,0.0],["T2","f",18.5,0.0],["T3","r",17.2,0.4],["T4","f",18.7,0.0],["T5","f",18.8,-0.1],["T6","f",18.8,0.0],["T7","r",17.3,0.2],["T9","f",16.4,0.0],["T10","f",16.4,-0.1],["T11","f",17.1,0.1],["T12","f",16.8,-0.1],["T13","f",17.5,-0.1],["T14","f",16.9,0.0],["T15","f",18.7,0.0],["T16","f",17.6,0.1],["T17","f",16.9,0.0],["T18","f",17.4,0.0],["T19","f",17.2,0.0],["T20","f",17.2,0.0],["T21","f",17.2,0.0],["T22","f",17.1,0.1],["T23","f",17.2,-0.1],["T24","f",18.2,0.0],["T25","f",20.8,0.1],["T26","f",20.8,0.1],["T27","f",20.7,0.1],["T28a","f",20.7,null],["T28b","f",20.7,null],["T29","f",20.7,0.2]];
+(function(){
+  const LAB={f:"SIBAL fabric",p:"PMMA thin film",r:"PMMA thick / rod",n:"Nomex",w:"Wax"};
+  const ORDER=["f","p","r","n","w"];
+  function draw(){
+    const W=900,L=130,R=20,x0=12,x1=36,X=v=>L+(v-x0)/(x1-x0)*(W-L-R);
+    let g="";
+    for(let v=12;v<=36;v+=4){g+=`<line x1="${X(v)}" x2="${X(v)}" y1="18" y2="200" stroke="var(--line)"/><text x="${X(v)}" y="216" text-anchor="middle">${v}% O₂</text>`}
+    ORDER.forEach((c,k)=>{const y=34+k*38;g+=`<text x="${L-10}" y="${y+4}" text-anchor="end">${LAB[c]}</text>`;
+      BASS2.filter(p=>p[1]===c).forEach((p,j)=>{const r=3+Math.max(0,p[3]||0)*2.4;const jy=y+((j%5)-2)*3;
+        g+=`<circle cx="${X(p[2])}" cy="${jy}" r="${r}" fill="${PCOL.solid}" fill-opacity=".35" stroke="${PCOL.solid}" stroke-opacity=".8"><title>${p[0]} · ${LAB[c]} · ${p[2]}% O₂${p[3]!=null?` · O₂ drop ${p[3]}`:""}</title></circle>`})});
+    const mx=Math.max(...BASS2.map(p=>p[2]));
+    g+=`<rect x="${X(mx)}" y="18" width="${X(Math.min(state.o2,x1))-X(mx)}" height="182" fill="var(--crit)" fill-opacity=".07"/>`;
+    const sx=X(Math.min(state.o2,x1));
+    g+=`<line x1="${sx}" x2="${sx}" y1="14" y2="200" stroke="var(--ember)" stroke-width="2"/><text x="${sx-4}" y="12" text-anchor="end" style="fill:var(--ember)">your habitat ${state.o2}%</text>`;
+    $("#tl").innerHTML=g;
+    const n=BASS2.length, above=BASS2.filter(p=>p[2]>=state.o2).length;
+    $("#tltxt").textContent=`Every BASS‑II test ran between ${Math.min(...BASS2.map(p=>p[2]))}% and ${mx}% initial O₂. ${above} of ${n} tests reach your habitat's ${state.o2}%. The red band is the oxygen range with no BASS‑II solid‑fuel tests.`;
+  }
+  const base=render; render=function(){base();draw()}; render();
 })();
 </script>
