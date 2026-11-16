@@ -1,0 +1,488 @@
+<title>Free Fall Fire Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: instrument console. Scenario controls left, ranked evidence + flammability map right; stacks on phones. */
+:root{
+  --bg:#f3f5f9; --panel:#ffffff; --ink:#141a26; --muted:#5b6578; --line:#d9dee8;
+  --flame:#1f6fe5;      /* microgravity blue flame */
+  --ember:#d9771f;      /* 1g flame / warning */
+  --crit:#c8372d; --ok:#1e8a5a;
+  --solid:#1f6fe5; --liquid:#8a4fd8; --gas:#1e9aa0; --aero:#9a7b2e;
+  --chip:#eef2f8;
+  --display:"Space Grotesk",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1220; --panel:#131b2d; --ink:#e7ecf5; --muted:#93a0b8; --line:#26314a;
+  --flame:#5aa2ff; --ember:#f0a04b; --crit:#ff6b5e; --ok:#43c08a;
+  --solid:#5aa2ff; --liquid:#b48aff; --gas:#4cc9cf; --aero:#d4b25c; --chip:#1b2540; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1220; --panel:#131b2d; --ink:#e7ecf5; --muted:#93a0b8; --line:#26314a;
+  --flame:#5aa2ff; --ember:#f0a04b; --crit:#ff6b5e; --ok:#43c08a;
+  --solid:#5aa2ff; --liquid:#b48aff; --gas:#4cc9cf; --aero:#d4b25c; --chip:#1b2540; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:1240px;margin:0 auto;display:grid;gap:20px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.01em}
+h2{font-size:1.1rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:68ch;margin:6px 0 0}
+header{display:grid;gap:4px}
+.grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;min-width:0}
+.sticky{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+@media (max-width:900px){.sticky{position:static}}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--chip);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:.85rem}
+button[aria-pressed="true"]{background:var(--flame);border-color:var(--flame);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.val{font-family:var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--flame)}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:6px}
+legend{font-size:.85rem;color:var(--muted);margin-bottom:4px}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.checks label{display:flex;align-items:center;gap:6px;background:var(--chip);padding:5px 10px;border-radius:999px;color:var(--ink);cursor:pointer}
+.readout{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);padding-top:12px}
+.readout div{display:grid;gap:2px}
+.readout b{font-family:var(--mono);font-size:1.05rem;font-variant-numeric:tabular-nums}
+.readout span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.brief{border-left:3px solid var(--flame);padding:4px 0 4px 14px;display:grid;gap:10px}
+.brief p{margin:0;max-width:75ch}
+.flag{display:inline-block;font-family:var(--mono);font-size:.7rem;padding:2px 8px;border-radius:4px;letter-spacing:.04em;text-transform:uppercase;margin-right:6px;vertical-align:1px}
+.flag.crit{background:color-mix(in srgb,var(--crit) 16%,transparent);color:var(--crit)}
+.flag.warn{background:color-mix(in srgb,var(--ember) 18%,transparent);color:var(--ember)}
+.flag.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px}
+@media (max-width:1100px){.cols{grid-template-columns:1fr}}
+.list{display:grid;gap:10px}
+.inv{border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:8px;background:var(--panel)}
+.inv.top{border-color:var(--flame)}
+.inv-head{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:start}
+.rank{font-family:var(--mono);color:var(--muted);font-size:.85rem;padding-top:2px}
+.inv h3{font-size:1rem}
+.inv .sub{font-size:.8rem;color:var(--muted)}
+.score{font-family:var(--mono);font-size:1.1rem;text-align:right;font-variant-numeric:tabular-nums}
+.bar{height:4px;background:var(--chip);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--flame)}
+.why{display:flex;flex-wrap:wrap;gap:5px}
+.why span{font-size:.75rem;background:var(--chip);padding:2px 8px;border-radius:999px}
+.phase{display:inline-flex;align-items:center;gap:5px;font-size:.75rem}
+.phase::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+details summary{cursor:pointer;font-size:.82rem;color:var(--flame)}
+dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 12px;margin:8px 0 0;font-size:.85rem}
+dt{color:var(--muted)} dd{margin:0}
+.cmp{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted)}
+.svgbox{overflow-x:auto}
+svg text{font-family:var(--mono);font-size:10px;fill:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.78rem;color:var(--muted)}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.84rem;min-width:520px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
+td.k{color:var(--muted);white-space:nowrap}
+.empty{color:var(--muted);font-size:.88rem}
+.askrow{display:flex;gap:8px}
+.askrow input{flex:1;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.askrow button{border-radius:8px;background:var(--flame);border-color:var(--flame);color:#fff;padding:8px 18px}
+.answer{display:grid;gap:8px;font-size:.95rem;max-width:80ch}
+.answer p{margin:0}
+.cite{font-family:var(--mono);font-size:.72rem;background:var(--chip);border:1px solid var(--line);color:var(--flame);padding:1px 6px;border-radius:4px;cursor:pointer;white-space:nowrap}
+.inv.hl{outline:2px solid var(--ember)}
+.err{color:var(--crit)}
+footer{font-size:.8rem;color:var(--muted);display:grid;gap:6px}
+footer a,a{color:var(--flame)}
+.note{font-size:.78rem;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .35s ease}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">NASA Space Apps 2026 · Flame in Free Fall</div>
+  <h1>Free Fall Fire Atlas</h1>
+  <p class="lede">Describe a crew habitat. The atlas ranks NASA's microgravity combustion investigations by how much they tell you about that habitat, maps where the evidence stops, and writes a fire‑safety brief you can trace back to each study.</p>
+</header>
+
+<div class="grid">
+  <aside class="panel sticky" aria-label="Habitat scenario">
+    <div class="eyebrow">1 · Habitat scenario</div>
+    <div class="presets" id="presets"></div>
+    <label for="o2"><div class="row">Oxygen concentration <span class="val" id="o2v"></span></div>
+      <input type="range" id="o2" min="15" max="50" step="0.5"></label>
+    <label for="p"><div class="row">Cabin pressure <span class="val" id="pv"></span></div>
+      <input type="range" id="p" min="4" max="15" step="0.1"></label>
+    <label for="flow"><div class="row">Ventilation airflow <span class="val" id="flowv"></span></div>
+      <input type="range" id="flow" min="0" max="50" step="1"></label>
+    <label for="grav"><div class="row">Gravity</div>
+      <select id="grav">
+        <option value="0">Microgravity (spacecraft, station)</option>
+        <option value="0.166">Lunar surface (0.17 g)</option>
+        <option value="0.378">Mars surface (0.38 g)</option>
+        <option value="1">Earth (1 g)</option>
+      </select></label>
+    <fieldset><legend>Fuels of concern</legend>
+      <div class="checks">
+        <label><input type="checkbox" name="phase" value="solid" checked> Solids (fabrics, plastics)</label>
+        <label><input type="checkbox" name="phase" value="liquid"> Liquids</label>
+        <label><input type="checkbox" name="phase" value="gas"> Gases</label>
+      </div></fieldset>
+    <fieldset><legend>Safety focus</legend>
+      <div class="checks">
+        <label><input type="checkbox" name="pillar" value="prevention" checked> Prevention</label>
+        <label><input type="checkbox" name="pillar" value="detection"> Detection</label>
+        <label><input type="checkbox" name="pillar" value="suppression"> Suppression</label>
+      </div></fieldset>
+    <div class="readout">
+      <div><b id="pO2"></b><span>O₂ partial pressure</span></div>
+      <div><b id="o2x"></b><span>O₂ vs Earth air</span></div>
+      <div><b id="cover"></b><span>Studies covering O₂</span></div>
+    </div>
+  </aside>
+
+  <main style="display:grid;gap:20px;min-width:0">
+    <section class="panel" aria-labelledby="briefh">
+      <div class="row"><h2 id="briefh">2 · Fire‑safety brief</h2><span class="eyebrow" id="scenName"></span></div>
+      <div class="brief" id="brief"></div>
+      <p class="note">Each statement is generated from the structured investigation records below and names the studies it rests on. No statement goes beyond what those records contain.</p>
+    </section>
+
+
+    <section class="panel" aria-labelledby="askh">
+      <div class="row"><h2 id="askh">Ask the Atlas</h2><span class="eyebrow" id="askModel">AI · cited answers</span></div>
+      <form id="askForm" class="askrow">
+        <input id="askQ" type="text" autocomplete="off" placeholder="e.g. Which fabrics have been burned in microgravity, and at what airflow?" aria-label="Question for the atlas">
+        <button type="submit" id="askBtn">Ask</button>
+      </form>
+      <div class="presets" id="askSugg"></div>
+      <div id="askOut" class="answer" aria-live="polite"></div>
+      <p class="note">Answers come only from the investigation records in this atlas and cite them as chips. If the records don't cover a question, the atlas says so and names the gap.</p>
+    </section>
+    <div class="cols">
+      <section class="panel" aria-labelledby="rankh">
+        <div class="row"><h2 id="rankh">3 · Most relevant investigations</h2><span class="eyebrow" id="count"></span></div>
+        <div class="list" id="list"></div>
+      </section>
+
+      <div style="display:grid;gap:20px;min-width:0;align-content:start">
+        <section class="panel" aria-labelledby="maph">
+          <h2 id="maph">4 · Evidence map</h2>
+          <p class="note" style="margin:0">Test envelopes by oxygen and airflow. The crosshair is your habitat. Empty space around it is a research gap.</p>
+          <div class="svgbox"><svg id="map" viewBox="0 0 460 300" role="img" aria-label="Oxygen versus airflow coverage map"></svg></div>
+          <div class="legend">
+            <span class="phase" style="--c:var(--solid)">Solid fuel</span>
+            <span class="phase" style="--c:var(--liquid)">Liquid droplet</span>
+            <span class="phase" style="--c:var(--gas)">Gaseous flame</span>
+            <span class="phase" style="--c:var(--aero)">Smoke / aerosol</span>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="cmph">
+          <h2 id="cmph">5 · Side‑by‑side</h2>
+          <div class="tablebox" id="compare"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div><b>Data.</b> Investigation records are compiled from NASA's Physical Sciences Informatics system (<a href="https://psi.nasa.gov" target="_blank" rel="noopener">psi.nasa.gov</a>) and the Space Apps 2026 “Flame in Free Fall” challenge brief. Records marked NTRS were checked against NASA technical reports; ranges marked ≈ are approximate envelopes still to be checked against each study's PSI documentation. Saffire‑IV–VI comes from NTRS and may not yet be in PSI.</div>
+  <div><b>Scope.</b> PSI holds no partial‑gravity combustion data yet (LUCI and FM2 are expected). Lunar and Mars results are bounded between microgravity and 1 g, as the challenge brief suggests. Rocket propellant fires are out of scope.</div>
+</footer>
+</div>
+
+<script>
+const INV = [
+ {id:"BASS",name:"BASS",full:"Burning and Suppression of Solids",hw:"MSG · SPICE flow duct",yrs:"2011–12",phase:"solid",
+  fuels:"PMMA slabs, cylinders and spheres; SIBAL cotton‑fiberglass fabric; Nomex, Ultem",o2:[21,21],p:[1,1],flow:[5,19],
+  meas:"Color video, flame spread rate, extinction by flow and by N₂ suppressant jet",pil:{prevention:1,detection:.2,suppression:.6},
+  finding:"Concurrent flame growth over fabric at 21% O₂ and 5–19 cm/s airflow; flames were most sensitive to flow at the lowest speeds.",
+  earth:"Informs flame‑spread models used for materials screening.",conf:"NTRS"},
+ {id:"BASS-II",name:"BASS‑II",full:"Burning and Suppression of Solids II",hw:"MSG · SPICE flow duct",yrs:"2012–13",phase:"solid",
+  fuels:"PMMA, cotton‑fiberglass fabric and other thin solids",o2:[14,21],p:[1,1],flow:[0,53],
+  meas:"Video, flame spread, flammability limits at reduced O₂",pil:{prevention:1,detection:.2,suppression:.6},
+  finding:"Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
+  earth:"Extends limiting‑oxygen data used in material selection.",conf:"≈"},
+ {id:"SAF1",name:"Saffire‑I",full:"Spacecraft Fire Safety Demonstration I",hw:"Cygnus vehicle, after ISS departure",yrs:"2016",phase:"solid",
+  fuels:"SIBAL fabric (75% cotton, 25% fiberglass), 0.4 × 0.95 m",o2:[21,21],p:[1,1],flow:[20,20],
+  meas:"Video, radiometers, thermocouples, cabin O₂ and CO₂ change",pil:{prevention:1,detection:.6,suppression:.2},
+  finding:"First large‑scale fire in a spacecraft‑sized volume; shows how a realistic fire grows and loads the cabin atmosphere.",
+  earth:"Scale‑up data for spread models.",conf:"NTRS",big:true},
+ {id:"SAF2",name:"Saffire‑II",full:"Spacecraft Fire Safety Demonstration II",hw:"Cygnus vehicle",yrs:"2016",phase:"solid",
+  fuels:"Nine 5 × 29 cm samples: silicone (3 thicknesses), SIBAL, PMMA, PMMA‑to‑Nomex transition, structured PMMA",o2:[21,21],p:[1,1],flow:[20,30],
+  meas:"Ignition and flammability of spacecraft materials, video, cabin gas sensors",pil:{prevention:1,detection:.5,suppression:.1},
+  finding:"Compared ignition and burning of real spacecraft materials side by side in one microgravity atmosphere.",
+  earth:"Material flammability rankings.",conf:"NTRS",big:true},
+ {id:"SAF3",name:"Saffire‑III",full:"Spacecraft Fire Safety Demonstration III",hw:"Cygnus vehicle",yrs:"2017",phase:"solid",
+  fuels:"SIBAL fabric, 0.4 × 0.95 m",o2:[21,21],p:[1,1],flow:[30,30],
+  meas:"Video, radiometers, cabin O₂ and CO₂ change",pil:{prevention:1,detection:.6,suppression:.2},
+  finding:"Repeat large‑scale burn that confirms Saffire‑I trends and adds flow‑direction data.",
+  earth:"Scale‑up data for spread models.",conf:"NTRS",big:true},
+ {id:"SAF46",name:"Saffire‑IV–VI",full:"Spacecraft Fire Safety Experiments IV–VI (verify PSI availability)",hw:"Cygnus vehicle",yrs:"2019–24",phase:"solid",
+  fuels:"Spacecraft solid materials at exploration atmospheres (see ICES‑2024 paper)",o2:[22,31],p:[.53,.99],flow:[20,20],
+  meas:"Flame spread, flammability, cabin gas and smoke sensors",pil:{prevention:1,detection:.6,suppression:.3},
+  finding:"Large‑scale burns at 22% O₂ / 100 kPa, 26.2% / 70.7 kPa and about 29–31% / 54–55 kPa: the only spacecraft‑scale solid fire data near lunar habitat oxygen levels.",
+  earth:"Oxygen‑enriched fire behaviour.",conf:"NTRS",big:true},
+ {id:"SAME",name:"SAME",full:"Smoke and Aerosol Measurement Experiment",hw:"MSG",yrs:"2007",phase:"aero",
+  fuels:"Overheated (non‑flaming) Teflon, Kapton, silicone rubber, cellulose, dibutyl phthalate",o2:[21,21],p:[1,1],flow:[0,5],
+  meas:"Particle size distribution, commercial and spacecraft smoke detectors",pil:{prevention:.1,detection:1,suppression:0},
+  finding:"Smoke particles in microgravity can be larger than on Earth, which changes which detector types respond.",
+  earth:"Fed improvements in terrestrial smoke detection.",conf:"≈"},
+ {id:"SAMER",name:"SAME‑R",full:"Smoke and Aerosol Measurement Experiment – Reflight",hw:"MSG",yrs:"2010",phase:"aero",
+  fuels:"Overheated Teflon, Kapton, cotton, silicone rubber, Pyrell foam",o2:[21,21],p:[1,1],flow:[0,5],
+  meas:"Particle size distribution, detector response",pil:{prevention:.1,detection:1,suppression:0},
+  finding:"Refines smoke particle data for next‑generation spacecraft detector design.",
+  earth:"Detector design data.",conf:"≈"},
+ {id:"DAFT",name:"DAFT / DAFT‑2",full:"Dust and Aerosol Measurement Feasibility Test",hw:"ISS cabin",yrs:"2004–05",phase:"aero",
+  fuels:"No fuel; ambient cabin dust",o2:[21,21],p:[1,1],flow:[0,5],
+  meas:"Particle counter shared with SAME smoke tests",pil:{prevention:0,detection:.6,suppression:0},
+  finding:"Baseline cabin dust levels, needed to keep smoke detectors from false alarms; relevant to lunar dust.",
+  earth:"Indoor air quality monitoring.",conf:"≈"},
+ {id:"FLEX",name:"FLEX",full:"Flame Extinguishment Experiment",hw:"CIR · MDCA",yrs:"2009–12",phase:"liquid",
+  fuels:"Heptane and methanol droplets",o2:[10,40],p:[.5,3],flow:[0,0],
+  meas:"Droplet burning rate, flame extinction, CO₂ and He diluent effects",pil:{prevention:.4,detection:0,suppression:1},
+  finding:"Limiting oxygen index ≈ 0.12 for methanol and ≈ 0.15 for heptane droplets; CO₂ and helium dilution extinguish flames, and heptane showed long‑lived cool flames after visible extinction.",
+  earth:"Gaseous suppressant effectiveness data.",conf:"NTRS"},
+ {id:"FLEX2",name:"FLEX‑2",full:"Flame Extinguishment Experiment 2",hw:"CIR · MDCA",yrs:"2012–16",phase:"liquid",
+  fuels:"Multicomponent fuel droplets, droplet arrays",o2:[15,40],p:[.5,3],flow:[0,5],
+  meas:"Burning rate, soot, flame spread between droplets",pil:{prevention:.5,detection:.2,suppression:.6},
+  finding:"Fire spread along droplet arrays and soot behaviour of fuel blends.",
+  earth:"Spray fire modelling.",conf:"≈"},
+ {id:"CFI",name:"CFI",full:"Cool Flames Investigation",hw:"CIR · MDCA",yrs:"2017–19",phase:"liquid",
+  fuels:"n‑alkane droplets",o2:[15,40],p:[1,3],flow:[0,0],
+  meas:"Cool flame lifetime and chemistry",pil:{prevention:.4,detection:.1,suppression:.3},
+  finding:"Low‑temperature cool flames persist where hot flames go out, a hidden hazard for re‑ignition.",
+  earth:"Engine knock and fuel chemistry.",conf:"≈"},
+ {id:"BRE",name:"ACME · BRE",full:"Burning Rate Emulator",hw:"CIR · ACME",yrs:"2017–21",phase:"gas",emul:true,
+  fuels:"Gaseous fuel through a porous burner, emulating burning solids and liquids",o2:[15,30],p:[.5,1],flow:[0,0],
+  meas:"Heat flux, burning rate as a function of material properties",pil:{prevention:.9,detection:.1,suppression:.3},
+  finding:"In still air, emulated fuels self‑extinguished below about 25% O₂ but burned for minutes at elevated oxygen: oxygen‑rich habitats remove the quiescent safety margin.",
+  earth:"Material flammability screening.",conf:"NTRS"},
+ {id:"CFIG",name:"ACME · CFI‑G",full:"Cool Flames Investigation with Gases",hw:"CIR · ACME",yrs:"2019–21",phase:"gas",
+  fuels:"Propane/N₂ ambient, O₂/N₂ flowing from spherical burner (inside‑out flame)",o2:[21,85],p:[1,1],flow:[0,0],
+  meas:"Flame structure, cool flame limits",pil:{prevention:.5,detection:0,suppression:.1},
+  finding:"Highest oxygen concentrations tested in microgravity (up to 85%), the only PSI data near suit and high‑O₂ habitat conditions.",
+  earth:"Oxygen‑enriched combustion (medical, industrial).",conf:"challenge"},
+ {id:"EFIELD",name:"ACME · E‑FIELD",full:"Electric‑Field Effects on Laminar Diffusion Flames",hw:"CIR · ACME",yrs:"2018",phase:"gas",
+  fuels:"Gaseous jet flames under applied electric field",o2:[21,21],p:[1,1],flow:[0,20],
+  meas:"Flame shape and ion current under field",pil:{prevention:.5,detection:.1,suppression:.2},
+  finding:"Electric field pushes flame ions to mimic a partial‑gravity body force, the closest PSI proxy for Moon and Mars.",
+  earth:"Flame control by electric fields.",conf:"challenge",pg:true},
+ {id:"CLD",name:"ACME · CLD Flame",full:"Coflow Laminar Diffusion Flame",hw:"CIR · ACME",yrs:"2018",phase:"gas",
+  fuels:"Gaseous fuel jet in coflowing air",o2:[21,40],p:[1,1],flow:[10,40],
+  meas:"Soot volume fraction, temperature",pil:{prevention:.3,detection:.5,suppression:.1},
+  finding:"Soot formation without buoyancy, the source of smoke that detectors must see.",
+  earth:"Soot emission models.",conf:"≈"},
+ {id:"FD",name:"ACME · Flame Design",full:"Flame Design",hw:"CIR · ACME",yrs:"2018–19",phase:"gas",
+  fuels:"Spherical diffusion flames",o2:[21,50],p:[1,1],flow:[0,0],
+  meas:"Soot inception and oxidation",pil:{prevention:.3,detection:.5,suppression:.1},
+  finding:"Shows how flame chemistry controls whether a fire is sooty or clean.",
+  earth:"Cleaner‑burning flame design.",conf:"≈"},
+ {id:"SFL",name:"ACME · s‑Flame",full:"Structure and Response of Spherical Diffusion Flames",hw:"CIR · ACME",yrs:"2017–18",phase:"gas",
+  fuels:"Spherical burner, gaseous fuels",o2:[21,40],p:[1,1],flow:[0,0],
+  meas:"Flame growth, extinction",pil:{prevention:.5,detection:.2,suppression:.3},
+  finding:"Validates models that predict when a quiescent flame grows or dies.",
+  earth:"Combustion model validation.",conf:"≈"},
+ {id:"SPICE",name:"SPICE",full:"Smoke Point In Co‑flow Experiment",hw:"MSG · flow duct",yrs:"2009–10",phase:"gas",
+  fuels:"Gaseous fuel jets",o2:[21,21],p:[1,1],flow:[0,45],
+  meas:"Smoke point, soot emission",pil:{prevention:.3,detection:.6,suppression:0},
+  finding:"Determines when a flame starts emitting smoke in microgravity; built the duct later reused by BASS and SLICE.",
+  earth:"Smoke emission limits.",conf:"challenge"},
+ {id:"SLICE",name:"SLICE",full:"Structure & Liftoff In Combustion Experiment",hw:"MSG · flow duct",yrs:"2012",phase:"gas",
+  fuels:"Gaseous fuel jets",o2:[21,21],p:[1,1],flow:[0,45],
+  meas:"Flame liftoff and blowout",pil:{prevention:.4,detection:.1,suppression:.3},
+  finding:"Airflow speeds at which a flame lifts off and blows out without buoyancy.",
+  earth:"Burner stability.",conf:"challenge"}
+];
+
+const PRESETS = [
+ {k:"iss",n:"ISS / Orion",o2:21,p:14.7,flow:15,g:"0",note:"Earth‑like cabin air"},
+ {k:"moon",n:"Moon Base",o2:30,p:10.2,flow:10,g:"0.166",note:"Challenge brief: ≥30% O₂ at ≤10.2 psi"},
+ {k:"rover",n:"Pressurized Rover",o2:34,p:8.2,flow:8,g:"0.166",note:"Exploration atmosphere: 34% O₂ at 8.2 psia"},
+ {k:"mars",n:"Mars Transit",o2:26.5,p:10.2,flow:12,g:"0",note:"26.5% O₂ at 10.2 psi (Shuttle staged‑decompression atmosphere)"},
+ {k:"earth",n:"Earth",o2:20.9,p:14.7,flow:5,g:"1",note:"Terrestrial applications"}
+];
+
+const $=s=>document.querySelector(s);
+const state={o2:30,p:10.2,flow:10,g:"0.166",phases:["solid"],pillars:["prevention"],preset:"moon"};
+const PCOL={solid:"var(--solid)",liquid:"var(--liquid)",gas:"var(--gas)",aero:"var(--aero)"};
+const PNAME={solid:"Solid",liquid:"Liquid droplet",gas:"Gaseous",aero:"Smoke / aerosol"};
+
+function distToRange(v,[a,b]){return v<a?a-v:v>b?v-b:0}
+
+function score(inv){
+  const why=[];
+  // safety pillar fit
+  const pf=state.pillars.length?Math.max(...state.pillars.map(k=>inv.pil[k]||0)):.5;
+  if(pf>=.8) why.push(state.pillars.find(k=>inv.pil[k]>=.8)+" study");
+  // fuel phase fit
+  let ph=0;
+  if(state.phases.includes(inv.phase)) {ph=1;why.push(PNAME[inv.phase].toLowerCase()+" fuel match")}
+  else if(inv.emul&&state.phases.includes("solid")){ph=.75;why.push("emulates burning solids")}
+  else if(inv.phase==="aero"&&state.pillars.includes("detection")){ph=.8}
+  // oxygen proximity
+  const dO=distToRange(state.o2,inv.o2);
+  const o=Math.exp(-dO/7);
+  if(dO===0) why.push("covers your O₂"); else if(dO<4) why.push("near your O₂");
+  // flow proximity
+  const dF=distToRange(state.flow,inv.flow);
+  const f=Math.exp(-dF/12);
+  if(dF===0) why.push("covers your airflow");
+  // pressure proximity (psi)
+  const pp=[inv.p[0]*14.7,inv.p[1]*14.7];
+  const pr=Math.exp(-distToRange(state.p,pp)/5);
+  // context bonuses
+  let bonus=0;
+  if(inv.big){bonus+=.04;why.push("spacecraft‑scale fire")}
+  if(inv.pg&&+state.g>0&&+state.g<1){bonus+=.12;why.push("partial‑gravity proxy")}
+  const s=Math.min(1,.32*pf+.26*ph+.22*o+.12*f+.08*pr+bonus);
+  return {s,why,dO};
+}
+
+function ranked(){return INV.map(i=>({...i,...score(i)})).sort((a,b)=>b.s-a.s)}
+
+let picked=new Set(["SAF1","BASS-II","CFIG"]);
+
+function renderList(R){
+  $("#count").textContent=R.length+" investigations";
+  $("#list").innerHTML=R.slice(0,8).map((r,i)=>`
+   <article class="inv ${i===0?"top":""}">
+     <div class="inv-head">
+       <div class="rank">${String(i+1).padStart(2,"0")}</div>
+       <div style="min-width:0"><h3>${r.name}</h3><div class="sub">${r.full} · ${r.yrs}</div></div>
+       <div class="score">${Math.round(r.s*100)}</div>
+     </div>
+     <div class="bar"><i style="width:${Math.round(r.s*100)}%"></i></div>
+     <div class="why"><span class="phase" style="--c:${PCOL[r.phase]}">${PNAME[r.phase]}</span>${r.why.slice(0,4).map(w=>`<span>${w}</span>`).join("")}</div>
+     <details><summary>Record and finding</summary>
+       <dl><dt>Hardware</dt><dd>${r.hw}</dd><dt>Fuels</dt><dd>${r.fuels}</dd>
+       <dt>O₂</dt><dd>${r.conf==="≈"?"≈ ":""}${r.o2[0]}–${r.o2[1]}%</dd>
+       <dt>Airflow</dt><dd>${r.conf==="≈"?"≈ ":""}${r.flow[0]}–${r.flow[1]} cm/s</dd>
+       <dt>Measured</dt><dd>${r.meas}</dd><dt>Finding</dt><dd>${r.finding}</dd><dt>On Earth</dt><dd>${r.earth}</dd></dl>
+     </details>
+     <label class="cmp"><input type="checkbox" data-cmp="${r.id}" ${picked.has(r.id)?"checked":""}> Compare</label>
+   </article>`).join("");
+  document.querySelectorAll("[data-cmp]").forEach(c=>c.onchange=()=>{c.checked?picked.add(c.dataset.cmp):picked.delete(c.dataset.cmp);renderCompare()});
+}
+
+function renderCompare(){
+  const rows=INV.filter(i=>picked.has(i.id)).slice(0,4);
+  if(!rows.length){$("#compare").innerHTML='<p class="empty">Tick “Compare” on up to four investigations to line them up here.</p>';return}
+  const f=[["Fuel type",r=>PNAME[r.phase]],["Fuels",r=>r.fuels],["Hardware",r=>r.hw],["O₂ %",r=>`${r.o2[0]}–${r.o2[1]}`],
+    ["Pressure (atm)",r=>`${r.p[0]}–${r.p[1]}`],["Airflow cm/s",r=>`${r.flow[0]}–${r.flow[1]}`],["Measured",r=>r.meas],
+    ["Prevention / Detection / Suppression",r=>["prevention","detection","suppression"].map(k=>Math.round(r.pil[k]*10)).join(" / ")]];
+  $("#compare").innerHTML=`<table><thead><tr><th></th>${rows.map(r=>`<th>${r.name}</th>`).join("")}</tr></thead>
+   <tbody>${f.map(([k,fn])=>`<tr><td class="k">${k}</td>${rows.map(r=>`<td>${fn(r)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+}
+
+function renderMap(){
+  const W=460,H=300,L=44,R=14,T=14,B=34,x0=10,x1=50,y1=50;
+  const X=v=>L+(Math.min(v,x1)-x0)/(x1-x0)*(W-L-R), Y=v=>H-B-(v/y1)*(H-T-B);
+  let g="";
+  for(let v=10;v<=50;v+=10){g+=`<line x1="${X(v)}" x2="${X(v)}" y1="${T}" y2="${H-B}" stroke="var(--line)"/><text x="${X(v)}" y="${H-B+14}" text-anchor="middle">${v}%</text>`}
+  for(let v=0;v<=50;v+=10){g+=`<line x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${L-6}" y="${Y(v)+3}" text-anchor="end">${v}</text>`}
+  g+=`<text x="${(L+W-R)/2}" y="${H-4}" text-anchor="middle">O₂ concentration</text><text transform="translate(11 ${(T+H-B)/2}) rotate(-90)" text-anchor="middle">airflow cm/s</text>`;
+  // Earth reference
+  g+=`<line x1="${X(20.9)}" x2="${X(20.9)}" y1="${T}" y2="${H-B}" stroke="var(--ember)" stroke-dasharray="3 3"/><text x="${X(20.9)+4}" y="${T+10}" style="fill:var(--ember)">Earth air</text>`;
+  INV.forEach(i=>{
+    const xa=X(i.o2[0]),xb=Math.max(X(i.o2[1]),xa+4),ya=Y(i.flow[1]),yb=Math.min(Y(i.flow[0]),H-B);
+    const h=Math.max(yb-ya,4);
+    g+=`<rect x="${xa}" y="${yb-h}" width="${xb-xa}" height="${h}" fill="${PCOL[i.phase]}" fill-opacity=".14" stroke="${PCOL[i.phase]}" stroke-opacity=".7"><title>${i.name}: O₂ ${i.o2[0]}–${i.o2[1]}%, flow ${i.flow[0]}–${i.flow[1]} cm/s</title></rect>`;
+  });
+  g+=`<text x="${W-R}" y="${H-B-6}" text-anchor="end" style="fill:var(--gas)">CFI‑G → 85%</text>`;
+  const sx=X(state.o2),sy=Y(state.flow);
+  g+=`<line x1="${sx}" x2="${sx}" y1="${T}" y2="${H-B}" stroke="var(--crit)"/><line x1="${L}" x2="${W-R}" y1="${sy}" y2="${sy}" stroke="var(--crit)"/>
+      <circle cx="${sx}" cy="${sy}" r="6" fill="var(--crit)"/><text x="${sx+9}" y="${sy-8}" style="fill:var(--crit);font-weight:500">your habitat</text>`;
+  $("#map").innerHTML=g;
+}
+
+function renderBrief(R){
+  const solids=INV.filter(i=>i.phase==="solid");
+  const maxSolidO2=Math.max(...solids.map(i=>i.o2[1]));
+  const cover=INV.filter(i=>i.phase!=="aero"&&distToRange(state.o2,i.o2)===0);
+  const pO2=state.o2/100*state.p, earthpO2=.209*14.7;
+  const g=+state.g; const top=R.slice(0,3).map(r=>r.name).join(", ");
+  const out=[];
+  // oxygen
+  if(state.o2>maxSolidO2+.5){
+    out.push(`<p><span class="flag crit">Gap</span>At ${state.o2}% O₂ your habitat is above every solid‑material burn in PSI (highest ≈ ${maxSolidO2}%, ${solids.filter(s=>s.o2[1]===maxSolidO2).map(s=>s.name).join(", ")}). Fabrics and plastics have no direct microgravity flammability data at this oxygen level. The only PSI flames above it are gaseous (${cover.map(c=>c.name).join(", ")||"none"}), so treat their results as indirect evidence.</p>`);
+  } else {
+    out.push(`<p><span class="flag ok">Covered</span>${cover.length} investigations bracket ${state.o2}% O₂, including solid‑fuel burns (${solids.filter(s=>distToRange(state.o2,s.o2)===0).map(s=>s.name).join(", ")}).</p>`);
+  }
+  // pressure vs concentration
+  if(state.o2>22){
+    out.push(`<p><span class="flag warn">Oxygen</span>O₂ partial pressure is ${pO2.toFixed(2)} psi, close to Earth's ${earthpO2.toFixed(2)} psi, so crews breathe normally. Flammability tracks the oxygen <em>fraction</em> more than its partial pressure: with less nitrogen to absorb heat, flames run hotter and spread faster. Rate this habitat as more flammable than the ISS even though the air feels the same.</p>`);
+  }
+  // flow
+  if(state.flow<=5){
+    out.push(`<p><span class="flag warn">Airflow</span>Near‑still air (${state.flow} cm/s). Without buoyancy, a flame here is fed only by diffusion. BASS‑II flames always quenched when the fan was turned off, and ACME BRE fuels self‑extinguished in still air below about 25% O₂. Above that oxygen level, still air is no longer a safety margin.</p>`);
+  } else {
+    out.push(`<p><span class="flag warn">Airflow</span>At ${state.flow} cm/s, cabin ventilation is in the range where BASS and Saffire saw solids burn steadily in microgravity (Saffire ran at 20–30 cm/s). BASS‑II flames quenched when the fan stopped, so fan shutdown is a first response. Materials can also burn at lower oxygen in microgravity than in 1 g ground tests.</p>`);
+  }
+  // gravity
+  if(g>0&&g<1){
+    out.push(`<p><span class="flag crit">Gap</span>PSI has no partial‑gravity combustion data. At ${g===.166?"lunar":"Mars"} gravity, behaviour should fall between the microgravity records here and normal‑gravity tests. ACME E‑FIELD, which mimics a weak body force with an electric field, is the nearest proxy until LUCI and FM2 data arrive.</p>`);
+  } else if(g===1){
+    out.push(`<p><span class="flag ok">Earth</span>Most transferable results: smoke particle data from SAME and SAME‑R for detector design, and FLEX diluent data for gaseous suppression systems. ISS fine‑water‑mist extinguisher work also applies on Earth.</p>`);
+  }
+  // detection / suppression
+  if(state.pillars.includes("detection")) out.push(`<p><span class="flag ok">Detection</span>SAME and SAME‑R found smoke particles from overheated spacecraft materials can be larger than on Earth. Size detectors to that particle range, and use DAFT cabin‑dust baselines to avoid false alarms, especially with lunar dust tracked inside.</p>`);
+  if(state.pillars.includes("suppression")) out.push(`<p><span class="flag ok">Suppression</span>FLEX measured how much CO₂ or helium dilution puts out a flame, and found cool flames that keep reacting after the visible flame is gone. After extinguishing, keep monitoring for re‑ignition.</p>`);
+  out.push(`<p><b>Start reading with:</b> ${top}.</p>`);
+  $("#brief").innerHTML=out.join("");
+  $("#pO2").textContent=pO2.toFixed(2)+" psi";
+  $("#o2x").textContent=(state.o2/20.9>=1?"+":"")+Math.round((state.o2/20.9-1)*100)+"%";
+  $("#cover").textContent=cover.length;
+}
+
+function render(){
+  $("#o2v").textContent=state.o2+"%";
+  $("#pv").textContent=state.p.toFixed(1)+" psi";
+  $("#flowv").textContent=state.flow+" cm/s";
+  const pr=PRESETS.find(p=>p.k===state.preset);
+  $("#scenName").textContent=pr?pr.n+" · "+pr.note:"Custom habitat";
+  document.querySelectorAll("#presets button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===state.preset));
+  const R=ranked(); renderList(R); renderMap(); renderBrief(R); renderCompare();
+}
+
+function sync(){$("#o2").value=state.o2;$("#p").value=state.p;$("#flow").value=state.flow;$("#grav").value=state.g}
+
+$("#presets").innerHTML=PRESETS.map(p=>`<button type="button" data-k="${p.k}">${p.n}</button>`).join("");
+document.querySelectorAll("#presets button").forEach(b=>b.onclick=()=>{
+  const p=PRESETS.find(x=>x.k===b.dataset.k);Object.assign(state,{o2:p.o2,p:p.p,flow:p.flow,g:p.g,preset:p.k});
+  if(p.k==="earth"){state.pillars=["detection","suppression"];document.querySelectorAll('[name=pillar]').forEach(c=>c.checked=state.pillars.includes(c.value))}
+  sync();render()});
+["o2","p","flow"].forEach(id=>$("#"+id).oninput=e=>{state[id]=+e.target.value;state.preset=null;render()});
+$("#grav").onchange=e=>{state.g=e.target.value;state.preset=null;render()};
+document.querySelectorAll('[name=phase]').forEach(c=>c.onchange=()=>{state.phases=[...document.querySelectorAll('[name=phase]:checked')].map(x=>x.value);render()});
+document.querySelectorAll('[name=pillar]').forEach(c=>c.onchange=()=>{state.pillars=[...document.querySelectorAll('[name=pillar]:checked')].map(x=>x.value);render()});
+sync();render();
+
+// ---- Ask the Atlas (calls /api/ask, which grounds Claude in the records above) ----
+const SUGG=["What does PSI tell us about fabrics burning at 30% oxygen?","Which studies inform smoke detector design?","How should a lunar base respond to a fire?","Where are the biggest research gaps for Mars?"];
+$("#askSugg").innerHTML=SUGG.map(q=>`<button type="button">${q}</button>`).join("");
+document.querySelectorAll("#askSugg button").forEach(b=>b.onclick=()=>{$("#askQ").value=b.textContent;ask()});
+function esc(t){return t.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]))}
+function cites(t){return esc(t).replace(/\[([^\]]+)\]/g,(m,ids)=>ids.split(/,\s*/).map(id=>{const i=INV.find(x=>x.id===id);return i?`<span class="cite" data-id="${id}" title="${i.full}">${i.name}</span>`:""}).join(" "))}
+async function ask(){
+  const q=$("#askQ").value.trim(); if(!q) return;
+  $("#askBtn").disabled=true; $("#askOut").innerHTML='<p class="note">Reading the records…</p>';
+  const scenario={habitat:$("#scenName").textContent,o2_percent:state.o2,pressure_psi:state.p,airflow_cm_s:state.flow,gravity_g:+state.g,fuels:state.phases,focus:state.pillars};
+  try{
+    const r=await fetch("/api/ask",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({question:q,scenario})});
+    const j=await r.json();
+    if(!r.ok) throw new Error(j.error||"The AI engine did not answer.");
+    $("#askOut").innerHTML=j.answer.split(/\n+/).filter(Boolean).map(p=>`<p>${cites(p)}</p>`).join("");
+    document.querySelectorAll("#askOut .cite").forEach(c=>c.onclick=()=>{picked.add(c.dataset.id);renderCompare();document.querySelectorAll("[data-cmp]").forEach(x=>x.checked=picked.has(x.dataset.cmp));$("#cmph").scrollIntoView({behavior:"smooth",block:"start"})});
+  }catch(e){$("#askOut").innerHTML=`<p class="err">${esc(e.message)} The ranking, map and brief above still work without it.</p>`}
+  finally{$("#askBtn").disabled=false}
+}
+$("#askForm").onsubmit=e=>{e.preventDefault();ask()};
+</script>

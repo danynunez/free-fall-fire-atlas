@@ -1,0 +1,608 @@
+[
+ {
+  "id": "BASS",
+  "name": "BASS",
+  "full": "Burning and Suppression of Solids",
+  "hw": "MSG · SPICE flow duct",
+  "yrs": "2011–12",
+  "phase": "solid",
+  "fuels": "PMMA slabs, cylinders and spheres; SIBAL cotton‑fiberglass fabric; Nomex, Ultem",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   5,
+   19
+  ],
+  "meas": "Color video, flame spread rate, extinction by flow and by N₂ suppressant jet",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.2,
+   "suppression": 0.6
+  },
+  "finding": "Concurrent flame growth over fabric at 21% O₂ and 5–19 cm/s airflow; flames were most sensitive to flow at the lowest speeds.",
+  "earth": "Informs flame‑spread models used for materials screening.",
+  "conf": "NTRS"
+ },
+ {
+  "id": "BASS-II",
+  "name": "BASS‑II",
+  "full": "Burning and Suppression of Solids II",
+  "hw": "MSG · SPICE flow duct",
+  "yrs": "2012–13",
+  "phase": "solid",
+  "fuels": "PMMA, cotton‑fiberglass fabric and other thin solids",
+  "o2": [
+   14,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   53
+  ],
+  "meas": "Video, flame spread, flammability limits at reduced O₂",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.2,
+   "suppression": 0.6
+  },
+  "finding": "Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
+  "earth": "Extends limiting‑oxygen data used in material selection.",
+  "conf": "≈"
+ },
+ {
+  "id": "SAF1",
+  "name": "Saffire‑I",
+  "full": "Spacecraft Fire Safety Demonstration I",
+  "hw": "Cygnus vehicle, after ISS departure",
+  "yrs": "2016",
+  "phase": "solid",
+  "fuels": "SIBAL fabric (75% cotton, 25% fiberglass), 0.4 × 0.95 m",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   20,
+   20
+  ],
+  "meas": "Video, radiometers, thermocouples, cabin O₂ and CO₂ change",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.6,
+   "suppression": 0.2
+  },
+  "finding": "First large‑scale fire in a spacecraft‑sized volume; shows how a realistic fire grows and loads the cabin atmosphere.",
+  "earth": "Scale‑up data for spread models.",
+  "conf": "NTRS",
+  "big": true
+ },
+ {
+  "id": "SAF2",
+  "name": "Saffire‑II",
+  "full": "Spacecraft Fire Safety Demonstration II",
+  "hw": "Cygnus vehicle",
+  "yrs": "2016",
+  "phase": "solid",
+  "fuels": "Nine 5 × 29 cm samples: silicone (3 thicknesses), SIBAL, PMMA, PMMA‑to‑Nomex transition, structured PMMA",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   20,
+   30
+  ],
+  "meas": "Ignition and flammability of spacecraft materials, video, cabin gas sensors",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.5,
+   "suppression": 0.1
+  },
+  "finding": "Compared ignition and burning of real spacecraft materials side by side in one microgravity atmosphere.",
+  "earth": "Material flammability rankings.",
+  "conf": "NTRS",
+  "big": true
+ },
+ {
+  "id": "SAF3",
+  "name": "Saffire‑III",
+  "full": "Spacecraft Fire Safety Demonstration III",
+  "hw": "Cygnus vehicle",
+  "yrs": "2017",
+  "phase": "solid",
+  "fuels": "SIBAL fabric, 0.4 × 0.95 m",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   30,
+   30
+  ],
+  "meas": "Video, radiometers, cabin O₂ and CO₂ change",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.6,
+   "suppression": 0.2
+  },
+  "finding": "Repeat large‑scale burn that confirms Saffire‑I trends and adds flow‑direction data.",
+  "earth": "Scale‑up data for spread models.",
+  "conf": "NTRS",
+  "big": true
+ },
+ {
+  "id": "SAF46",
+  "name": "Saffire‑IV–VI",
+  "full": "Spacecraft Fire Safety Experiments IV–VI (verify PSI availability)",
+  "hw": "Cygnus vehicle",
+  "yrs": "2019–24",
+  "phase": "solid",
+  "fuels": "Spacecraft solid materials at exploration atmospheres (see ICES‑2024 paper)",
+  "o2": [
+   22,
+   31
+  ],
+  "p": [
+   0.53,
+   0.99
+  ],
+  "flow": [
+   20,
+   20
+  ],
+  "meas": "Flame spread, flammability, cabin gas and smoke sensors",
+  "pil": {
+   "prevention": 1,
+   "detection": 0.6,
+   "suppression": 0.3
+  },
+  "finding": "Large‑scale burns at 22% O₂ / 100 kPa, 26.2% / 70.7 kPa and about 29–31% / 54–55 kPa: the only spacecraft‑scale solid fire data near lunar habitat oxygen levels.",
+  "earth": "Oxygen‑enriched fire behaviour.",
+  "conf": "NTRS",
+  "big": true
+ },
+ {
+  "id": "SAME",
+  "name": "SAME",
+  "full": "Smoke and Aerosol Measurement Experiment",
+  "hw": "MSG",
+  "yrs": "2007",
+  "phase": "aero",
+  "fuels": "Overheated (non‑flaming) Teflon, Kapton, silicone rubber, cellulose, dibutyl phthalate",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   5
+  ],
+  "meas": "Particle size distribution, commercial and spacecraft smoke detectors",
+  "pil": {
+   "prevention": 0.1,
+   "detection": 1,
+   "suppression": 0
+  },
+  "finding": "Smoke particles in microgravity can be larger than on Earth, which changes which detector types respond.",
+  "earth": "Fed improvements in terrestrial smoke detection.",
+  "conf": "≈"
+ },
+ {
+  "id": "SAMER",
+  "name": "SAME‑R",
+  "full": "Smoke and Aerosol Measurement Experiment – Reflight",
+  "hw": "MSG",
+  "yrs": "2010",
+  "phase": "aero",
+  "fuels": "Overheated Teflon, Kapton, cotton, silicone rubber, Pyrell foam",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   5
+  ],
+  "meas": "Particle size distribution, detector response",
+  "pil": {
+   "prevention": 0.1,
+   "detection": 1,
+   "suppression": 0
+  },
+  "finding": "Refines smoke particle data for next‑generation spacecraft detector design.",
+  "earth": "Detector design data.",
+  "conf": "≈"
+ },
+ {
+  "id": "DAFT",
+  "name": "DAFT / DAFT‑2",
+  "full": "Dust and Aerosol Measurement Feasibility Test",
+  "hw": "ISS cabin",
+  "yrs": "2004–05",
+  "phase": "aero",
+  "fuels": "No fuel; ambient cabin dust",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   5
+  ],
+  "meas": "Particle counter shared with SAME smoke tests",
+  "pil": {
+   "prevention": 0,
+   "detection": 0.6,
+   "suppression": 0
+  },
+  "finding": "Baseline cabin dust levels, needed to keep smoke detectors from false alarms; relevant to lunar dust.",
+  "earth": "Indoor air quality monitoring.",
+  "conf": "≈"
+ },
+ {
+  "id": "FLEX",
+  "name": "FLEX",
+  "full": "Flame Extinguishment Experiment",
+  "hw": "CIR · MDCA",
+  "yrs": "2009–12",
+  "phase": "liquid",
+  "fuels": "Heptane and methanol droplets",
+  "o2": [
+   10,
+   40
+  ],
+  "p": [
+   0.5,
+   3
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Droplet burning rate, flame extinction, CO₂ and He diluent effects",
+  "pil": {
+   "prevention": 0.4,
+   "detection": 0,
+   "suppression": 1
+  },
+  "finding": "Limiting oxygen index ≈ 0.12 for methanol and ≈ 0.15 for heptane droplets; CO₂ and helium dilution extinguish flames, and heptane showed long‑lived cool flames after visible extinction.",
+  "earth": "Gaseous suppressant effectiveness data.",
+  "conf": "NTRS"
+ },
+ {
+  "id": "FLEX2",
+  "name": "FLEX‑2",
+  "full": "Flame Extinguishment Experiment 2",
+  "hw": "CIR · MDCA",
+  "yrs": "2012–16",
+  "phase": "liquid",
+  "fuels": "Multicomponent fuel droplets, droplet arrays",
+  "o2": [
+   15,
+   40
+  ],
+  "p": [
+   0.5,
+   3
+  ],
+  "flow": [
+   0,
+   5
+  ],
+  "meas": "Burning rate, soot, flame spread between droplets",
+  "pil": {
+   "prevention": 0.5,
+   "detection": 0.2,
+   "suppression": 0.6
+  },
+  "finding": "Fire spread along droplet arrays and soot behaviour of fuel blends.",
+  "earth": "Spray fire modelling.",
+  "conf": "≈"
+ },
+ {
+  "id": "CFI",
+  "name": "CFI",
+  "full": "Cool Flames Investigation",
+  "hw": "CIR · MDCA",
+  "yrs": "2017–19",
+  "phase": "liquid",
+  "fuels": "n‑alkane droplets",
+  "o2": [
+   15,
+   40
+  ],
+  "p": [
+   1,
+   3
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Cool flame lifetime and chemistry",
+  "pil": {
+   "prevention": 0.4,
+   "detection": 0.1,
+   "suppression": 0.3
+  },
+  "finding": "Low‑temperature cool flames persist where hot flames go out, a hidden hazard for re‑ignition.",
+  "earth": "Engine knock and fuel chemistry.",
+  "conf": "≈"
+ },
+ {
+  "id": "BRE",
+  "name": "ACME · BRE",
+  "full": "Burning Rate Emulator",
+  "hw": "CIR · ACME",
+  "yrs": "2017–21",
+  "phase": "gas",
+  "emul": true,
+  "fuels": "Gaseous fuel through a porous burner, emulating burning solids and liquids",
+  "o2": [
+   15,
+   30
+  ],
+  "p": [
+   0.5,
+   1
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Heat flux, burning rate as a function of material properties",
+  "pil": {
+   "prevention": 0.9,
+   "detection": 0.1,
+   "suppression": 0.3
+  },
+  "finding": "In still air, emulated fuels self‑extinguished below about 25% O₂ but burned for minutes at elevated oxygen: oxygen‑rich habitats remove the quiescent safety margin.",
+  "earth": "Material flammability screening.",
+  "conf": "NTRS"
+ },
+ {
+  "id": "CFIG",
+  "name": "ACME · CFI‑G",
+  "full": "Cool Flames Investigation with Gases",
+  "hw": "CIR · ACME",
+  "yrs": "2019–21",
+  "phase": "gas",
+  "fuels": "Propane/N₂ ambient, O₂/N₂ flowing from spherical burner (inside‑out flame)",
+  "o2": [
+   21,
+   85
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Flame structure, cool flame limits",
+  "pil": {
+   "prevention": 0.5,
+   "detection": 0,
+   "suppression": 0.1
+  },
+  "finding": "Highest oxygen concentrations tested in microgravity (up to 85%), the only PSI data near suit and high‑O₂ habitat conditions.",
+  "earth": "Oxygen‑enriched combustion (medical, industrial).",
+  "conf": "challenge"
+ },
+ {
+  "id": "EFIELD",
+  "name": "ACME · E‑FIELD",
+  "full": "Electric‑Field Effects on Laminar Diffusion Flames",
+  "hw": "CIR · ACME",
+  "yrs": "2018",
+  "phase": "gas",
+  "fuels": "Gaseous jet flames under applied electric field",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   20
+  ],
+  "meas": "Flame shape and ion current under field",
+  "pil": {
+   "prevention": 0.5,
+   "detection": 0.1,
+   "suppression": 0.2
+  },
+  "finding": "Electric field pushes flame ions to mimic a partial‑gravity body force, the closest PSI proxy for Moon and Mars.",
+  "earth": "Flame control by electric fields.",
+  "conf": "challenge",
+  "pg": true
+ },
+ {
+  "id": "CLD",
+  "name": "ACME · CLD Flame",
+  "full": "Coflow Laminar Diffusion Flame",
+  "hw": "CIR · ACME",
+  "yrs": "2018",
+  "phase": "gas",
+  "fuels": "Gaseous fuel jet in coflowing air",
+  "o2": [
+   21,
+   40
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   10,
+   40
+  ],
+  "meas": "Soot volume fraction, temperature",
+  "pil": {
+   "prevention": 0.3,
+   "detection": 0.5,
+   "suppression": 0.1
+  },
+  "finding": "Soot formation without buoyancy, the source of smoke that detectors must see.",
+  "earth": "Soot emission models.",
+  "conf": "≈"
+ },
+ {
+  "id": "FD",
+  "name": "ACME · Flame Design",
+  "full": "Flame Design",
+  "hw": "CIR · ACME",
+  "yrs": "2018–19",
+  "phase": "gas",
+  "fuels": "Spherical diffusion flames",
+  "o2": [
+   21,
+   50
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Soot inception and oxidation",
+  "pil": {
+   "prevention": 0.3,
+   "detection": 0.5,
+   "suppression": 0.1
+  },
+  "finding": "Shows how flame chemistry controls whether a fire is sooty or clean.",
+  "earth": "Cleaner‑burning flame design.",
+  "conf": "≈"
+ },
+ {
+  "id": "SFL",
+  "name": "ACME · s‑Flame",
+  "full": "Structure and Response of Spherical Diffusion Flames",
+  "hw": "CIR · ACME",
+  "yrs": "2017–18",
+  "phase": "gas",
+  "fuels": "Spherical burner, gaseous fuels",
+  "o2": [
+   21,
+   40
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   0
+  ],
+  "meas": "Flame growth, extinction",
+  "pil": {
+   "prevention": 0.5,
+   "detection": 0.2,
+   "suppression": 0.3
+  },
+  "finding": "Validates models that predict when a quiescent flame grows or dies.",
+  "earth": "Combustion model validation.",
+  "conf": "≈"
+ },
+ {
+  "id": "SPICE",
+  "name": "SPICE",
+  "full": "Smoke Point In Co‑flow Experiment",
+  "hw": "MSG · flow duct",
+  "yrs": "2009–10",
+  "phase": "gas",
+  "fuels": "Gaseous fuel jets",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   45
+  ],
+  "meas": "Smoke point, soot emission",
+  "pil": {
+   "prevention": 0.3,
+   "detection": 0.6,
+   "suppression": 0
+  },
+  "finding": "Determines when a flame starts emitting smoke in microgravity; built the duct later reused by BASS and SLICE.",
+  "earth": "Smoke emission limits.",
+  "conf": "challenge"
+ },
+ {
+  "id": "SLICE",
+  "name": "SLICE",
+  "full": "Structure & Liftoff In Combustion Experiment",
+  "hw": "MSG · flow duct",
+  "yrs": "2012",
+  "phase": "gas",
+  "fuels": "Gaseous fuel jets",
+  "o2": [
+   21,
+   21
+  ],
+  "p": [
+   1,
+   1
+  ],
+  "flow": [
+   0,
+   45
+  ],
+  "meas": "Flame liftoff and blowout",
+  "pil": {
+   "prevention": 0.4,
+   "detection": 0.1,
+   "suppression": 0.3
+  },
+  "finding": "Airflow speeds at which a flame lifts off and blows out without buoyancy.",
+  "earth": "Burner stability.",
+  "conf": "challenge"
+ }
+]
