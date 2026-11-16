@@ -71,19 +71,31 @@ ${JSON.stringify(INV)}
 
 Question: ${question}`;
 
+  async function call(model) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 25000);
+    try {
+      const r = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST", signal: ctl.signal,
+        headers: { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01" },
+        body: JSON.stringify({ model, max_tokens: 900, system: SYSTEM, messages: [{ role: "user", content: user }] })
+      });
+      const j = await r.json();
+      if (!r.ok) console.error("Anthropic error", model, r.status, j?.error?.message);
+      return { r, j };
+    } finally { clearTimeout(timer); }
+  }
+
   try {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: MODEL, max_tokens: 900, system: SYSTEM, messages: [{ role: "user", content: user }] })
-    });
-    const j = await r.json();
+    let { r, j } = await call(MODEL);
+    if (!r.ok && MODEL !== "claude-sonnet-5-5") ({ r, j } = await call("claude-sonnet-5-5"));
     if (!r.ok) return res.status(502).json({ error: "The AI engine is unavailable right now. The ranking, map and brief still work." });
     const text = (j.content || []).filter(c => c.type === "text").map(c => c.text).join("\n");
     const cited = [...new Set([...text.matchAll(/\[([^\]]+)\]/g)].flatMap(m => m[1].split(/,\s*/)))]
       .filter(id => INV.some(i => i.id === id));
     res.status(200).json({ answer: text, cited, model: MODEL });
   } catch (e) {
-    res.status(500).json({ error: "Could not reach the AI engine." });
+    console.error("Ask failed", e && e.name, e && e.message);
+    res.status(504).json({ error: e && e.name === "AbortError" ? "The AI engine took too long to answer. Please try again." : "Could not reach the AI engine." });
   }
 };
