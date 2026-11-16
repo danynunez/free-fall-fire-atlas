@@ -11,7 +11,7 @@ NASA has decades of fire experiments from the ISS and the Cygnus vehicle, but th
 ## What it does
 
 1. **Describe a habitat.** Pick a preset (ISS/Orion, Moon Base, Pressurized Rover, Mars Transit, Earth) or set oxygen, pressure, airflow, gravity, fuels of concern and safety focus (prevention, detection, suppression).
-2. **Ranked investigations.** 19 PSI investigations (BASS, BASS-II, Saffire I–III, SAME, SAME-R, DAFT, FLEX, FLEX-2, CFI, and the six ACME experiments, SPICE, SLICE) are scored for relevance to that habitat, with the reasons shown on each card.
+2. **Ranked investigations.** 20 combustion investigations (BASS, BASS-II, Saffire I–III and IV–VI, SAME, SAME-R, DAFT, FLEX, FLEX-2, CFI, and the six ACME experiments, SPICE, SLICE) are scored for relevance to that habitat, with the reasons shown on each card.
 3. **Evidence map.** Every investigation's test envelope is plotted on oxygen vs. airflow. The habitat appears as a crosshair, so empty space around it is a visible research gap.
 4. **Fire-safety brief.** A rule-based interpreter writes a short brief: oxygen coverage gaps, the oxygen-fraction vs. partial-pressure effect, ventilation behaviour without buoyancy, the partial-gravity data gap, and detection and suppression lessons. Each statement names the studies it rests on.
 5. **Ask the Atlas.** Free-text questions are answered by Claude, grounded only in the structured records and required to cite them. Citations become clickable chips that load the studies into the side-by-side comparison.
@@ -19,7 +19,7 @@ NASA has decades of fire experiments from the ISS and the Cygnus vehicle, but th
 
 ## Key insight the atlas surfaces
 
-At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressure* is almost identical to Earth's, so it breathes like normal air. But the oxygen *fraction* is ~44% higher, and flammability tracks the fraction. In the records compiled here, no solid-material (fabric, plastic) burn in PSI exceeds about 21% O₂. The only PSI flames above that level are gaseous (ACME CFI-G, up to 85% O₂). That is the single largest gap between the data NASA has and the habitats NASA is building.
+At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressure* is almost identical to Earth's, so it breathes like normal air. But the oxygen *fraction* is about 44% higher, and flammability tracks the fraction. ACME BRE showed emulated fuels self-extinguish in still air below about 25% O₂ yet burn for minutes above it, so oxygen-rich habitats lose the quiescent safety margin. The large-scale Saffire-IV–VI burns reach only about 29–31% O₂ at reduced pressure, and no solid-material data yet covers the 34% O₂ / 8.2 psia exploration atmosphere planned for rovers. That is the clearest gap between the data NASA has and the habitats NASA is building.
 
 ## How the SI works
 
@@ -29,7 +29,7 @@ At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressur
 
 ## Limitations
 
-- Ranges marked ≈ are approximate envelopes compiled for this hackathon and should be checked against each study's PSI documentation.
+- Records marked NTRS were checked against NASA technical reports. Ranges marked ≈ are approximate envelopes still to be checked against each study's PSI documentation. Saffire-IV–VI data come from NTRS and may not yet be in PSI.
 - PSI contains no partial-gravity combustion data yet (LUCI and FM2 are expected). Lunar and Mars behaviour is bounded between microgravity and 1 g.
 - Rocket and propellant fires are outside the scope of PSI and of this tool.
 

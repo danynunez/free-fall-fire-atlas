@@ -11,7 +11,8 @@ Rules:
 - After every factual sentence, cite the record(s) it relies on as [ID], e.g. [BASS-II] or [SAF1, CFIG].
 - If the records do not contain the answer, say so plainly and name the research gap. Never invent numbers, materials or results.
 - Ranges marked conf "≈" are approximate; say "approximately" when you use them.
-- PSI has no partial-gravity combustion data; for Moon or Mars, reason that behaviour is bounded by microgravity and 1 g data, and mention ACME E-FIELD as the nearest proxy.
+- PSI has no partial-gravity combustion data. For Moon or Mars, say that microgravity and 1 g results are reference cases only and cannot be directly extrapolated, because combustion is nonlinear. ACME E-FIELD reproduces only some body-force effects.
+- Distinguish what a study reported from your own inference, and never present safety advice as validated for engineering use.
 - Organize practical advice under prevention, detection and suppression when relevant.
 - Be concise: at most 180 words, plain language, no markdown headings.`;
 
