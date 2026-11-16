@@ -4,6 +4,13 @@
 
 An SI-powered web dashboard that turns NASA's microgravity combustion experiments (Physical Sciences Informatics, PSI) into fire-safety answers for a specific crew habitat.
 
+
+**Live demo:** https://free-fall-fire-atlas.vercel.app · **Overview (PDF):** [docs/FreeFallFireAtlas_LinkedIn.pdf](docs/FreeFallFireAtlas_LinkedIn.pdf) · **30-second demo:** [video/FreeFallFireAtlas_30s.mp4](video/FreeFallFireAtlas_30s.mp4)
+
+![Pressurized Rover: 34% O2 and zero solid-fuel coverage](docs/rover_gap.png)
+
+![All 129 BASS-II tests (PSI-25) ran below 22.2% O2](docs/bass2_129_tests.png)
+
 ## The problem
 
 NASA has decades of fire experiments from the ISS and the Cygnus vehicle, but the results are hard to find, harder to compare, and harder to interpret. Meanwhile the habitats NASA is designing next are more flammable than the ISS: the Moon Base and pressurized rovers are expected to run at **30% oxygen or more at 10.2 psi or less**, so astronauts can suit up with less pre-breathing. Apollo 1 showed what oxygen-rich cabins can do. Engineers need to know which experiments apply to these atmospheres, and where the evidence runs out.
