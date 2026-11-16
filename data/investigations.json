@@ -27,7 +27,14 @@
   },
   "finding": "Concurrent flame growth over fabric at 21% O₂ and 5–19 cm/s airflow; flames were most sensitive to flow at the lowest speeds.",
   "earth": "Informs flame‑spread models used for materials screening.",
-  "conf": "NTRS"
+  "conf": "NTRS",
+  "tests": {
+   "varied": "Airflow: 5, 10, 11 and 19 cm/s; sample material and geometry (flat, cylinder, sphere)",
+   "fixed": "21% O₂, 1 atm, MSG flow duct"
+  },
+  "equipment": [
+   "Nitrogen jet suppression of burning solids"
+  ]
  },
  {
   "id": "BASS-II",
@@ -57,7 +64,15 @@
   },
   "finding": "Materials can burn at lower oxygen in microgravity than in normal gravity; flames shrank to flamelets at low flow, blew off at high flow, and always quenched when the fan was turned off (Olson et al., ICES 2019).",
   "earth": "Extends limiting‑oxygen data used in material selection.",
-  "conf": "≈"
+  "conf": "≈",
+  "tests": {
+   "varied": "O₂ lowered by N₂ dilution; airflow from near 0 up to about 53 cm/s",
+   "fixed": "MSG flow duct, ~1 atm"
+  },
+  "equipment": [
+   "Nitrogen jet suppression of burning solids",
+   "Fan shutdown as first response"
+  ]
  },
  {
   "id": "SAF1",
@@ -88,7 +103,10 @@
   "finding": "First large‑scale fire in a spacecraft‑sized volume; shows how a realistic fire grows and loads the cabin atmosphere.",
   "earth": "Scale‑up data for spread models.",
   "conf": "NTRS",
-  "big": true
+  "big": true,
+  "equipment": [
+   "Cabin O₂ / CO₂ change as an early fire signature"
+  ]
  },
  {
   "id": "SAF2",
@@ -119,7 +137,14 @@
   "finding": "Compared ignition and burning of real spacecraft materials side by side in one microgravity atmosphere.",
   "earth": "Material flammability rankings.",
   "conf": "NTRS",
-  "big": true
+  "big": true,
+  "tests": {
+   "varied": "Nine materials and thicknesses: silicone ×3, SIBAL, PMMA, PMMA‑to‑Nomex, structured PMMA; flow 20 cm/s (one sample at 30 cm/s)",
+   "fixed": "~21% O₂ cabin atmosphere, 5 × 29 cm samples"
+  },
+  "equipment": [
+   "Material screening at exploration atmospheres"
+  ]
  },
  {
   "id": "SAF3",
@@ -150,7 +175,10 @@
   "finding": "Repeat large‑scale burn that confirms Saffire‑I trends and adds flow‑direction data.",
   "earth": "Scale‑up data for spread models.",
   "conf": "NTRS",
-  "big": true
+  "big": true,
+  "equipment": [
+   "Cabin O₂ / CO₂ change as an early fire signature"
+  ]
  },
  {
   "id": "SAF46",
@@ -181,7 +209,14 @@
   "finding": "Large‑scale burns at 22% O₂ / 100 kPa, 26.2% / 70.7 kPa and about 29–31% / 54–55 kPa: the only spacecraft‑scale solid fire data near lunar habitat oxygen levels.",
   "earth": "Oxygen‑enriched fire behaviour.",
   "conf": "NTRS",
-  "big": true
+  "big": true,
+  "tests": {
+   "varied": "Atmosphere: 22% O₂ / 100 kPa, 26.2% / 70.7 kPa, ~29–31% / 54–55 kPa",
+   "fixed": "20 cm/s concurrent flow, Cygnus vehicle"
+  },
+  "equipment": [
+   "Material screening at exploration atmospheres"
+  ]
  },
  {
   "id": "SAME",
@@ -211,7 +246,15 @@
   },
   "finding": "Smoke particles in microgravity can be larger than on Earth, which changes which detector types respond.",
   "earth": "Fed improvements in terrestrial smoke detection.",
-  "conf": "≈"
+  "conf": "≈",
+  "tests": {
+   "varied": "Material heated (Teflon, Kapton, silicone, cellulose, dibutyl phthalate) and heating temperature",
+   "fixed": "Non‑flaming smoke, cabin air"
+  },
+  "equipment": [
+   "Smoke detectors sized for larger microgravity smoke particles",
+   "False‑alarm rejection against cabin and lunar dust"
+  ]
  },
  {
   "id": "SAMER",
@@ -241,7 +284,14 @@
   },
   "finding": "Refines smoke particle data for next‑generation spacecraft detector design.",
   "earth": "Detector design data.",
-  "conf": "≈"
+  "conf": "≈",
+  "tests": {
+   "varied": "Material heated (Teflon, Kapton, cotton, silicone, Pyrell)",
+   "fixed": "Non‑flaming smoke, cabin air"
+  },
+  "equipment": [
+   "Smoke detectors sized for larger microgravity smoke particles"
+  ]
  },
  {
   "id": "DAFT",
@@ -271,7 +321,10 @@
   },
   "finding": "Baseline cabin dust levels, needed to keep smoke detectors from false alarms; relevant to lunar dust.",
   "earth": "Indoor air quality monitoring.",
-  "conf": "≈"
+  "conf": "≈",
+  "equipment": [
+   "False‑alarm rejection against cabin and lunar dust"
+  ]
  },
  {
   "id": "FLEX",
@@ -301,7 +354,15 @@
   },
   "finding": "Limiting oxygen index ≈ 0.12 for methanol and ≈ 0.15 for heptane droplets; CO₂ and helium dilution extinguish flames, and heptane showed long‑lived cool flames after visible extinction.",
   "earth": "Gaseous suppressant effectiveness data.",
-  "conf": "NTRS"
+  "conf": "NTRS",
+  "tests": {
+   "varied": "Fuel (heptane, methanol); O₂ mole fraction 0.1–0.4; pressure 0.7–3 atm; CO₂ or He diluent",
+   "fixed": "Free droplets in the MDCA, quiescent"
+  },
+  "equipment": [
+   "Inert‑gas (CO₂, He) suppressant concentrations",
+   "Post‑extinction monitoring for cool flames and re‑ignition"
+  ]
  },
  {
   "id": "FLEX2",
@@ -331,7 +392,8 @@
   },
   "finding": "Fire spread along droplet arrays and soot behaviour of fuel blends.",
   "earth": "Spray fire modelling.",
-  "conf": "≈"
+  "conf": "≈",
+  "equipment": []
  },
  {
   "id": "CFI",
@@ -361,7 +423,10 @@
   },
   "finding": "Low‑temperature cool flames persist where hot flames go out, a hidden hazard for re‑ignition.",
   "earth": "Engine knock and fuel chemistry.",
-  "conf": "≈"
+  "conf": "≈",
+  "equipment": [
+   "Post‑extinction monitoring for cool flames and re‑ignition"
+  ]
  },
  {
   "id": "BRE",
@@ -392,7 +457,14 @@
   },
   "finding": "In still air, emulated fuels self‑extinguished below about 25% O₂ but burned for minutes at elevated oxygen: oxygen‑rich habitats remove the quiescent safety margin.",
   "earth": "Material flammability screening.",
-  "conf": "NTRS"
+  "conf": "NTRS",
+  "tests": {
+   "varied": "Ambient O₂ and emulated material properties",
+   "fixed": "Quiescent atmosphere; flames self‑extinguished below ~25% O₂"
+  },
+  "equipment": [
+   "Material screening at exploration atmospheres"
+  ]
  },
  {
   "id": "CFIG",
@@ -422,7 +494,8 @@
   },
   "finding": "Highest oxygen concentrations tested in microgravity (up to 85%), the only PSI data near suit and high‑O₂ habitat conditions.",
   "earth": "Oxygen‑enriched combustion (medical, industrial).",
-  "conf": "challenge"
+  "conf": "challenge",
+  "equipment": []
  },
  {
   "id": "EFIELD",
@@ -453,7 +526,8 @@
   "finding": "Electric field pushes flame ions to mimic a partial‑gravity body force, the closest PSI proxy for Moon and Mars.",
   "earth": "Flame control by electric fields.",
   "conf": "challenge",
-  "pg": true
+  "pg": true,
+  "equipment": []
  },
  {
   "id": "CLD",
@@ -483,7 +557,14 @@
   },
   "finding": "Soot formation without buoyancy, the source of smoke that detectors must see.",
   "earth": "Soot emission models.",
-  "conf": "≈"
+  "conf": "≈",
+  "tests": {
+   "varied": "Matched fuel and coflow velocity: 10, 20, 30 and 40 cm/s",
+   "fixed": "ACME hardware in the CIR"
+  },
+  "equipment": [
+   "Smoke‑point limits for flame emissions"
+  ]
  },
  {
   "id": "FD",
@@ -513,7 +594,8 @@
   },
   "finding": "Shows how flame chemistry controls whether a fire is sooty or clean.",
   "earth": "Cleaner‑burning flame design.",
-  "conf": "≈"
+  "conf": "≈",
+  "equipment": []
  },
  {
   "id": "SFL",
@@ -543,7 +625,8 @@
   },
   "finding": "Validates models that predict when a quiescent flame grows or dies.",
   "earth": "Combustion model validation.",
-  "conf": "≈"
+  "conf": "≈",
+  "equipment": []
  },
  {
   "id": "SPICE",
@@ -573,7 +656,10 @@
   },
   "finding": "Determines when a flame starts emitting smoke in microgravity; built the duct later reused by BASS and SLICE.",
   "earth": "Smoke emission limits.",
-  "conf": "challenge"
+  "conf": "challenge",
+  "equipment": [
+   "Smoke‑point limits for flame emissions"
+  ]
  },
  {
   "id": "SLICE",
@@ -603,6 +689,7 @@
   },
   "finding": "Airflow speeds at which a flame lifts off and blows out without buoyancy.",
   "earth": "Burner stability.",
-  "conf": "challenge"
+  "conf": "challenge",
+  "equipment": []
  }
 ]
