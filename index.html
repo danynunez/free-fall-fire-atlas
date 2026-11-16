@@ -23,7 +23,7 @@ h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
 h2{font-size:1.15rem;font-weight:500}
 .brand{font-weight:600;font-size:.95rem;letter-spacing:-.01em}
 .tabs{display:flex;gap:14px;font-size:1.25rem;margin:18px 0 12px}
-.tabs span:last-child{color:#c3c5ca}
+.tab{all:unset;cursor:pointer;color:#c3c5ca}.tab[aria-selected="true"]{color:var(--ink)}.tab:hover{color:var(--ink)}.tab:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
 /* rail */
 .rail{display:grid;gap:10px;align-content:start}
 .nav{display:grid;gap:6px}
@@ -136,7 +136,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 <div class="app">
  <aside class="rail" aria-label="Habitat scenario">
   <div class="brand">free fall · fire atlas</div>
-  <div class="tabs"><span>Habitats</span><span>Records</span></div>
+  <div class="tabs" role="tablist"><button type="button" class="tab" id="tabHab" aria-selected="true">Habitats</button><button type="button" class="tab" id="tabRec" aria-selected="false">Records</button></div>
   <div class="nav" id="presets"></div>
   <div class="ctl">
     <label for="o2"><div class="row">Oxygen <span class="val" id="o2v"></span></div><input type="range" id="o2" min="15" max="50" step="0.5"></label>
@@ -714,5 +714,13 @@ const BASS2=[["B1","p",22.2,0.0],["B2","p",22.2,null],["B3","p",22.2,0.4],["B4",
     $("#tltxt").textContent=`Every BASS‑II test ran between ${Math.min(...BASS2.map(p=>p[2]))}% and ${mx}% initial O₂. ${above} of ${n} tests reach your habitat's ${state.o2}%. The red band is the oxygen range with no BASS‑II solid‑fuel tests.`;
   }
   const base=render; render=function(){base();draw()}; render();
+})();
+</script>
+<script>
+(function(){
+  const h=document.getElementById("tabHab"),r=document.getElementById("tabRec");
+  const sel=t=>{h.setAttribute("aria-selected",t===h);r.setAttribute("aria-selected",t===r)};
+  h.onclick=()=>{sel(h);window.scrollTo({top:0,behavior:"smooth"})};
+  r.onclick=()=>{sel(r);document.getElementById("rankh").scrollIntoView({behavior:"smooth",block:"start"})};
 })();
 </script>
