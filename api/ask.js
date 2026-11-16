@@ -2,7 +2,7 @@
 // Runs as a Vercel serverless function. The API key stays server-side (ANTHROPIC_API_KEY).
 const INV = require("../data/investigations.json");
 
-const MODEL = process.env.ATLAS_MODEL || "claude-haiku-5-5";
+const MODEL = process.env.ATLAS_MODEL || "claude-sonnet-5-5";
 
 // --- Abuse protection ---------------------------------------------------
 // 1) Only accept requests coming from the atlas itself.
@@ -78,7 +78,7 @@ Question: ${question}`;
       const r = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST", signal: ctl.signal,
         headers: { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01" },
-        body: JSON.stringify({ model, max_tokens: 900, system: SYSTEM, messages: [{ role: "user", content: user }] })
+        body: JSON.stringify({ model, max_tokens: 2000, system: SYSTEM, messages: [{ role: "user", content: user }] })
       });
       const j = await r.json();
       if (!r.ok) console.error("Anthropic error", model, r.status, j?.error?.message);
@@ -87,10 +87,11 @@ Question: ${question}`;
   }
 
   try {
+    const textOf = j => (j?.content || []).filter(c => c.type === "text").map(c => c.text).join("\n").trim();
     let { r, j } = await call(MODEL);
-    if (!r.ok && MODEL !== "claude-sonnet-5-5") ({ r, j } = await call("claude-sonnet-5-5"));
-    if (!r.ok) return res.status(502).json({ error: "The AI engine is unavailable right now. The ranking, map and brief still work." });
-    const text = (j.content || []).filter(c => c.type === "text").map(c => c.text).join("\n");
+    if ((!r.ok || !textOf(j)) && MODEL !== "claude-sonnet-5-5") ({ r, j } = await call("claude-sonnet-5-5"));
+    const text = textOf(j);
+    if (!r.ok || !text) { console.error("No answer", r.status, j?.stop_reason); return res.status(502).json({ error: "The AI engine could not answer right now. Please try again in a moment." }); }
     const cited = [...new Set([...text.matchAll(/\[([^\]]+)\]/g)].flatMap(m => m[1].split(/,\s*/)))]
       .filter(id => INV.some(i => i.id === id));
     res.status(200).json({ answer: text, cited, model: MODEL });

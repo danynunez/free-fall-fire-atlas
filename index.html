@@ -568,6 +568,7 @@ async function ask(){
     const ct=r.headers.get("content-type")||"";if(!ct.includes("json"))throw new Error("The AI engine did not answer in time. Please try again.");
     const j=await r.json();
     if(!r.ok) throw new Error(j.error||"The AI engine did not answer.");
+    if(!j.answer||!j.answer.trim())throw new Error("The AI engine returned an empty answer. Please try again.");
     $("#askOut").innerHTML=j.answer.split(/\n+/).filter(Boolean).map(p=>`<p>${cites(p)}</p>`).join("");
     document.querySelectorAll("#askOut .cite").forEach(c=>c.onclick=()=>{picked.add(c.dataset.id);renderCompare();document.querySelectorAll("[data-cmp]").forEach(x=>x.checked=picked.has(x.dataset.cmp));$("#cmph").scrollIntoView({behavior:"smooth",block:"start"})});
   }catch(e){$("#askOut").innerHTML=`<p class="err">${esc(e.name==="AbortError"?"The AI engine took too long. Please try again.":e.message)} The ranking, map and brief above still work without it.</p>`}
