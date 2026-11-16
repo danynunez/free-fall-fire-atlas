@@ -34,7 +34,9 @@
   },
   "equipment": [
    "Nitrogen jet suppression of burning solids"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20150008962/downloads/20150008962.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "BASS-II",
@@ -71,8 +73,10 @@
   },
   "equipment": [
    "Nitrogen jet suppression of burning solids",
-   "Fan shutdown as first response"
-  ]
+   "Ventilation shutdown during fire response (tested conditions)"
+  ],
+  "source": "https://ntrs.nasa.gov/citations/20160000593",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "SAF1",
@@ -106,7 +110,9 @@
   "big": true,
   "equipment": [
    "Cabin O₂ / CO₂ change as an early fire signature"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "SAF2",
@@ -144,7 +150,9 @@
   },
   "equipment": [
    "Material screening at exploration atmospheres"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20160010292/downloads/20160010292.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "SAF3",
@@ -178,7 +186,9 @@
   "big": true,
   "equipment": [
    "Cabin O₂ / CO₂ change as an early fire signature"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "SAF46",
@@ -216,7 +226,9 @@
   },
   "equipment": [
    "Material screening at exploration atmospheres"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20240002981/downloads/Saffire-ICES-2024-ICES-365-accepted%20final.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "SAME",
@@ -254,7 +266,9 @@
   "equipment": [
    "Smoke detectors sized for larger microgravity smoke particles",
    "False‑alarm rejection against cabin and lunar dust"
-  ]
+  ],
+  "source": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "SAMER",
@@ -291,7 +305,9 @@
   },
   "equipment": [
    "Smoke detectors sized for larger microgravity smoke particles"
-  ]
+  ],
+  "source": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "DAFT",
@@ -324,7 +340,9 @@
   "conf": "≈",
   "equipment": [
    "False‑alarm rejection against cabin and lunar dust"
-  ]
+  ],
+  "source": "https://psi.nasa.gov",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "FLEX",
@@ -362,7 +380,9 @@
   "equipment": [
    "Inert‑gas (CO₂, He) suppressant concentrations",
    "Post‑extinction monitoring for cool flames and re‑ignition"
-  ]
+  ],
+  "source": "https://link.springer.com/doi/10.1007/s12217-014-9372-2",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "FLEX2",
@@ -393,7 +413,9 @@
   "finding": "Fire spread along droplet arrays and soot behaviour of fuel blends.",
   "earth": "Spray fire modelling.",
   "conf": "≈",
-  "equipment": []
+  "equipment": [],
+  "source": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "CFI",
@@ -426,7 +448,9 @@
   "conf": "≈",
   "equipment": [
    "Post‑extinction monitoring for cool flames and re‑ignition"
-  ]
+  ],
+  "source": "https://psi.nasa.gov",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "BRE",
@@ -464,7 +488,9 @@
   },
   "equipment": [
    "Material screening at exploration atmospheres"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
+  "data_status": "Reported in NASA technical reports"
  },
  {
   "id": "CFIG",
@@ -495,7 +521,9 @@
   "finding": "Highest oxygen concentrations tested in microgravity (up to 85%), the only PSI data near suit and high‑O₂ habitat conditions.",
   "earth": "Oxygen‑enriched combustion (medical, industrial).",
   "conf": "challenge",
-  "equipment": []
+  "equipment": [],
+  "source": "https://science.nasa.gov/mission/acme",
+  "data_status": "Stated in the Space Apps challenge brief"
  },
  {
   "id": "EFIELD",
@@ -523,11 +551,13 @@
    "detection": 0.1,
    "suppression": 0.2
   },
-  "finding": "Electric field pushes flame ions to mimic a partial‑gravity body force, the closest PSI proxy for Moon and Mars.",
+  "finding": "An electric field acts on flame ions to reproduce some body‑force effects; a partial analogue for gravity, not a substitute for partial‑gravity tests.",
   "earth": "Flame control by electric fields.",
   "conf": "challenge",
   "pg": true,
-  "equipment": []
+  "equipment": [],
+  "source": "https://science.nasa.gov/mission/acme",
+  "data_status": "Stated in the Space Apps challenge brief"
  },
  {
   "id": "CLD",
@@ -564,7 +594,9 @@
   },
   "equipment": [
    "Smoke‑point limits for flame emissions"
-  ]
+  ],
+  "source": "https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "FD",
@@ -595,7 +627,9 @@
   "finding": "Shows how flame chemistry controls whether a fire is sooty or clean.",
   "earth": "Cleaner‑burning flame design.",
   "conf": "≈",
-  "equipment": []
+  "equipment": [],
+  "source": "https://science.nasa.gov/mission/acme",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "SFL",
@@ -626,7 +660,9 @@
   "finding": "Validates models that predict when a quiescent flame grows or dies.",
   "earth": "Combustion model validation.",
   "conf": "≈",
-  "equipment": []
+  "equipment": [],
+  "source": "https://science.nasa.gov/mission/acme",
+  "data_status": "Estimated envelope, not yet checked against PSI"
  },
  {
   "id": "SPICE",
@@ -659,7 +695,9 @@
   "conf": "challenge",
   "equipment": [
    "Smoke‑point limits for flame emissions"
-  ]
+  ],
+  "source": "https://issnationallab.org/?p=42222",
+  "data_status": "Stated in the Space Apps challenge brief"
  },
  {
   "id": "SLICE",
@@ -690,6 +728,8 @@
   "finding": "Airflow speeds at which a flame lifts off and blows out without buoyancy.",
   "earth": "Burner stability.",
   "conf": "challenge",
-  "equipment": []
+  "equipment": [],
+  "source": "https://issnationallab.org/?p=42222",
+  "data_status": "Stated in the Space Apps challenge brief"
  }
 ]

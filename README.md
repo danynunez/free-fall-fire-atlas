@@ -19,7 +19,7 @@ NASA has decades of fire experiments from the ISS and the Cygnus vehicle, but th
 
 ## Key insight the atlas surfaces
 
-At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressure* is almost identical to Earth's, so it breathes like normal air. But the oxygen *fraction* is about 44% higher, and flammability tracks the fraction. ACME BRE showed emulated fuels self-extinguish in still air below about 25% O₂ yet burn for minutes above it, so oxygen-rich habitats lose the quiescent safety margin. The large-scale Saffire-IV–VI burns reach only about 29–31% O₂ at reduced pressure, and no solid-material data yet covers the 34% O₂ / 8.2 psia exploration atmosphere planned for rovers. That is the clearest gap between the data NASA has and the habitats NASA is building.
+At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressure* is almost identical to Earth's, so it breathes like normal air. But the oxygen *fraction* is about 44% higher, and material flammability generally rises with oxygen concentration, with the size of the effect depending on material and pressure. ACME BRE showed emulated fuels self-extinguish in still air below about 25% O₂ yet burn for minutes above it, so oxygen-rich habitats lose the quiescent safety margin. The large-scale Saffire-IV–VI burns reach only about 29–31% O₂ at reduced pressure, and no solid-material data yet covers the 34% O₂ / 8.2 psia exploration atmosphere planned for rovers. That is the clearest gap between the data NASA has and the habitats NASA is building.
 
 ## How the SI works
 
@@ -29,8 +29,11 @@ At the planned lunar atmosphere (30% O₂, 10.2 psi) the oxygen *partial pressur
 
 ## Limitations
 
+- The similarity distance is a heuristic measure of closeness to published test envelopes, not a validated flammability prediction. Variables inside a study's ranges may not have been tested together.
+- Records are investigation-level metadata, not observation-level measurements; they support, but are not sufficient for, training predictive models.
+- Test-by-test variables are listed only for the 9 investigations verified against NASA reports.
 - Records marked NTRS were checked against NASA technical reports. Ranges marked ≈ are approximate envelopes still to be checked against each study's PSI documentation. Saffire-IV–VI data come from NTRS and may not yet be in PSI.
-- PSI contains no partial-gravity combustion data yet (LUCI and FM2 are expected). Lunar and Mars behaviour is bounded between microgravity and 1 g.
+- PSI contains no partial-gravity combustion data yet (LUCI and FM2 are expected). Microgravity and 1 g results are reference cases only: combustion is nonlinear, so lunar and Mars behaviour cannot be assumed to fall between them.
 - Rocket and propellant fires are outside the scope of PSI and of this tool.
 
 ## Run it

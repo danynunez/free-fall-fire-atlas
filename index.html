@@ -152,7 +152,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
       <label><input type="checkbox" name="pillar" value="detection"> Detection</label>
       <label><input type="checkbox" name="pillar" value="suppression"> Suppression</label></div></fieldset>
   </div>
-  <div class="promo"><span class="pill">Open data</span><b>Structured PSI records</b><span style="color:var(--muted)">20 investigations, one JSON file, ready for flammability modelling.</span><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">Open dataset</a></div>
+  <div class="promo"><span class="pill">Open data</span><b>Structured PSI records</b><span style="color:var(--muted)">20 investigation‑level records with sources, in one JSON file.</span><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">Open dataset</a></div>
  </aside>
 
  <main>
@@ -177,7 +177,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 
   <div class="metrics">
     <div class="grad g1"><div class="lab">Evidence coverage</div><div class="big" id="covBig"></div><div class="cap" id="covCap"></div></div>
-    <div class="grad g2"><div class="lab">Oxygen vs Earth air</div><div class="big" id="o2x"></div><div class="cap">Flammability tracks O₂ fraction</div></div>
+    <div class="grad g2"><div class="lab">Oxygen vs Earth air</div><div class="big" id="o2x"></div><div class="cap">Flammability generally rises with O₂ concentration</div></div>
     <div class="flames" aria-label="Flame comparison">
       <div class="cell"><canvas id="cv1"></canvas><div class="tag">Gravity <b id="g1">1 g · Earth</b></div><div class="foot">Buoyancy: teardrop</div></div>
       <div class="cell"><canvas id="cv2"></canvas><div class="tag">Your habitat <b id="g2"></b></div><div class="foot" id="f2"></div></div>
@@ -186,7 +186,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
   </div>
 
   <section class="card" aria-labelledby="briefh">
-    <div class="row"><h2 id="briefh">Fire‑safety brief</h2><span class="note">Every line names its studies</span></div>
+    <div class="row"><h2 id="briefh">Fire‑safety brief</h2><span class="note">Inferred from the records; every line names its studies</span></div>
     <div class="brief" id="brief"></div>
   </section>
 
@@ -198,11 +198,11 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 
   <div class="cols">
    <section class="card" aria-labelledby="modh">
-    <div class="row"><h2 id="modh">Modeling readiness</h2><span class="note">For predictive flammability models</span></div>
-    <div class="kpis" style="margin:0"><div class="kpi"><b id="xd"></b><span>extrapolation distance</span></div><div class="kpi"><b id="xn" style="font-family:var(--sans);font-size:1.1rem;font-weight:500"></b><span>nearest tested condition</span></div></div>
+    <div class="row"><h2 id="modh">Experimental similarity</h2><span class="note">Inputs for future predictive models</span></div>
+    <div class="kpis" style="margin:0"><div class="kpi"><b id="xd"></b><span>similarity distance (heuristic)</span></div><div class="kpi"><b id="xn" style="font-family:var(--sans);font-size:1.1rem;font-weight:500"></b><span>nearest published envelope</span></div></div>
     <p class="note" id="xtxt"></p>
-    <p class="note">Distance = √[(ΔO₂/5%)² + (Δp/3 psi)² + (Δflow/10 cm/s)²] to the nearest test envelope for your selected fuels. 0 means the habitat sits inside a tested condition; above 1, any model is extrapolating.</p>
-    <div class="row" style="justify-content:flex-start"><button type="button" class="btn" id="csvBtn" style="border:0;cursor:pointer;font:inherit">Export model‑ready CSV</button><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">JSON</a></div>
+    <p class="note">Distance = √[(ΔO₂/5%)² + (Δp/3 psi)² + (Δflow/10 cm/s)²] to the nearest published test envelope for your selected fuels. A heuristic similarity measure, not a flammability prediction: 0 means each variable falls inside a study's reported range, though those values may not have been tested together. Fuel, thickness, geometry, ignition and gravity are not included.</p>
+    <div class="row" style="justify-content:flex-start"><button type="button" class="btn" id="csvBtn" style="border:0;cursor:pointer;font:inherit">Export structured investigation data (CSV)</button><a class="btn" href="data/investigations.json" target="_blank" rel="noopener">JSON</a></div>
    </section>
    <section class="card" aria-labelledby="eqh">
     <div class="row"><h2 id="eqh">Next‑generation equipment</h2><span class="note">Which studies inform which hardware</span></div>
@@ -235,7 +235,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 </div>
 <footer>
   <div><b>Data.</b> Records compiled from NASA Physical Sciences Informatics (<a href="https://psi.nasa.gov" target="_blank" rel="noopener">psi.nasa.gov</a>), NASA Technical Reports and the Space Apps 2026 “Flame in Free Fall” brief. Records marked NTRS were checked against technical reports; ≈ marks approximate envelopes. Saffire‑IV–VI comes from NTRS and may not yet be in PSI.</div>
-  <div><b>Scope.</b> PSI holds no partial‑gravity combustion data yet (LUCI and FM2 expected). Lunar and Mars results are bounded between microgravity and 1 g. Rocket propellant fires are out of scope.</div>
+  <div><b>Scope.</b> PSI holds no partial‑gravity combustion data yet (LUCI and FM2 expected). Lunar and Mars behaviour cannot be directly extrapolated from microgravity or 1 g results. Rocket propellant fires are out of scope.</div>
 </footer>
 <script>
 const INV = [
@@ -312,7 +312,7 @@ const INV = [
  {id:"EFIELD",name:"ACME · E‑FIELD",full:"Electric‑Field Effects on Laminar Diffusion Flames",hw:"CIR · ACME",yrs:"2018",phase:"gas",
   fuels:"Gaseous jet flames under applied electric field",o2:[21,21],p:[1,1],flow:[0,20],
   meas:"Flame shape and ion current under field",pil:{prevention:.5,detection:.1,suppression:.2},
-  finding:"Electric field pushes flame ions to mimic a partial‑gravity body force, the closest PSI proxy for Moon and Mars.",
+  finding:"An electric field acts on flame ions to reproduce some body‑force effects; a partial analogue for gravity, not a substitute for partial‑gravity tests.",
   earth:"Flame control by electric fields.",conf:"challenge",pg:true},
  {id:"CLD",name:"ACME · CLD Flame",full:"Coflow Laminar Diffusion Flame",hw:"CIR · ACME",yrs:"2018",phase:"gas",
   fuels:"Gaseous fuel jet in coflowing air",o2:[21,40],p:[1,1],flow:[10,40],
@@ -356,10 +356,28 @@ const TESTS={
 const EQUIP=[
  {g:"Detection",items:[["Smoke detectors sized for larger microgravity smoke particles",["SAME","SAMER"]],["False‑alarm rejection against cabin and lunar dust",["DAFT","SAME"]],["Cabin O₂ / CO₂ change as an early fire signature",["SAF1","SAF3"]]]},
  {g:"Suppression",items:[["Inert‑gas (CO₂, He) suppressant concentrations",["FLEX"]],["Post‑extinction monitoring for cool flames and re‑ignition",["FLEX","CFI"]],["Nitrogen jet suppression of burning solids",["BASS","BASS-II"]]]},
- {g:"Ventilation and materials",items:[["Fan shutdown as first response",["BASS-II"]],["Material screening at exploration atmospheres",["SAF46","BRE","SAF2"]],["Smoke‑point limits for flame emissions",["SPICE","CLD"]]]}
+ {g:"Ventilation and materials",items:[["Ventilation shutdown during fire response (tested conditions)",["BASS-II"]],["Material screening at exploration atmospheres",["SAF46","BRE","SAF2"]],["Smoke‑point limits for flame emissions",["SPICE","CLD"]]]}
 ];
 INV.forEach(i=>{if(TESTS[i.id])i.tests=TESTS[i.id];i.equipment=EQUIP.flatMap(e=>e.items.filter(([,ids])=>ids.includes(i.id)).map(([t])=>t))});
 
+const SRC={
+ "BASS":"https://ntrs.nasa.gov/api/citations/20150008962/downloads/20150008962.pdf",
+ "BASS-II":"https://ntrs.nasa.gov/citations/20160000593",
+ "SAF1":"https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
+ "SAF2":"https://ntrs.nasa.gov/api/citations/20160010292/downloads/20160010292.pdf",
+ "SAF3":"https://ntrs.nasa.gov/api/citations/20170002628/downloads/20170002628.pdf",
+ "SAF46":"https://ntrs.nasa.gov/api/citations/20240002981/downloads/Saffire-ICES-2024-ICES-365-accepted%20final.pdf",
+ "SAME":"https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+ "SAMER":"https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+ "FLEX":"https://link.springer.com/doi/10.1007/s12217-014-9372-2",
+ "FLEX2":"https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+ "BRE":"https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
+ "CLD":"https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf",
+ "CFIG":"https://science.nasa.gov/mission/acme","EFIELD":"https://science.nasa.gov/mission/acme","FD":"https://science.nasa.gov/mission/acme","SFL":"https://science.nasa.gov/mission/acme",
+ "SPICE":"https://issnationallab.org/?p=42222","SLICE":"https://issnationallab.org/?p=42222"
+};
+const STATUS={"NTRS":"Reported in NASA technical reports","≈":"Estimated envelope, not yet checked against PSI","challenge":"Stated in the Space Apps challenge brief"};
+INV.forEach(i=>{i.source=SRC[i.id]||"https://psi.nasa.gov";i.data_status=STATUS[i.conf]});
 const PRESETS = [
  {k:"iss",n:"ISS / Orion",o2:21,p:14.7,flow:15,g:"0",note:"Earth‑like cabin air"},
  {k:"moon",n:"Moon Base",o2:30,p:10.2,flow:10,g:"0.166",note:"Challenge brief: ≥30% O₂ at ≤10.2 psi"},
@@ -410,7 +428,7 @@ let picked=new Set(["SAF1","BASS-II","CFIG"]);
 
 function renderList(R){
   $("#count").textContent=R.length+" investigations";
-  $("#list").innerHTML=R.slice(0,8).map((r,i)=>`
+  $("#list").innerHTML=R.map((r,i)=>`
    <article class="inv ${i===0?"top":""}">
      <div class="inv-head">
        <div class="rank">${String(i+1).padStart(2,"0")}</div>
@@ -423,7 +441,7 @@ function renderList(R){
        <dl><dt>Hardware</dt><dd>${r.hw}</dd><dt>Fuels</dt><dd>${r.fuels}</dd>
        <dt>O₂</dt><dd>${r.conf==="≈"?"≈ ":""}${r.o2[0]}–${r.o2[1]}%</dd>
        <dt>Airflow</dt><dd>${r.conf==="≈"?"≈ ":""}${r.flow[0]}–${r.flow[1]} cm/s</dd>
-       <dt>Measured</dt><dd>${r.meas}</dd>${r.tests?`<dt>Varied</dt><dd>${r.tests.varied}</dd><dt>Held fixed</dt><dd>${r.tests.fixed}</dd>`:`<dt>Tests</dt><dd>Test‑by‑test matrix: see the study's PSI page</dd>`}${r.equipment.length?`<dt>Informs</dt><dd>${r.equipment.join("; ")}</dd>`:""}<dt>Finding</dt><dd>${r.finding}</dd><dt>On Earth</dt><dd>${r.earth}</dd></dl>
+       <dt>Measured</dt><dd>${r.meas}</dd>${r.tests?`<dt>Varied</dt><dd>${r.tests.varied}</dd><dt>Held fixed</dt><dd>${r.tests.fixed}</dd>`:`<dt>Tests</dt><dd>Test‑by‑test matrix: see the study's PSI page</dd>`}${r.equipment.length?`<dt>Informs</dt><dd>${r.equipment.join("; ")}</dd>`:""}<dt>Data status</dt><dd>${r.data_status}</dd><dt>Finding</dt><dd>${r.finding}</dd><dt>Source</dt><dd><a href="${r.source}" target="_blank" rel="noopener">Primary NASA source</a></dd><dt>On Earth</dt><dd>${r.earth}</dd></dl>
      </details>
      <label class="cmp"><input type="checkbox" data-cmp="${r.id}" ${picked.has(r.id)?"checked":""}> Compare</label>
    </article>`).join("");
@@ -477,17 +495,17 @@ function renderBrief(R){
   }
   // pressure vs concentration
   if(state.o2>22){
-    out.push(`<p><span class="flag warn">Oxygen</span>O₂ partial pressure is ${pO2.toFixed(2)} psi, close to Earth's ${earthpO2.toFixed(2)} psi, so crews breathe normally. Flammability tracks the oxygen <em>fraction</em> more than its partial pressure: with less nitrogen to absorb heat, flames run hotter and spread faster. Rate this habitat as more flammable than the ISS even though the air feels the same.</p>`);
+    out.push(`<p><span class="flag warn">Oxygen</span>O₂ partial pressure is ${pO2.toFixed(2)} psi, close to Earth's ${earthpO2.toFixed(2)} psi, so crews breathe normally. Material flammability generally rises with oxygen concentration even at Earth‑like partial pressure, because there is less nitrogen to absorb heat. The size of the effect depends on the material and the pressure, so treat this habitat as more flammable than the ISS until materials are tested here.</p>`);
   }
   // flow
   if(state.flow<=5){
-    out.push(`<p><span class="flag warn">Airflow</span>Near‑still air (${state.flow} cm/s). Without buoyancy, a flame here is fed only by diffusion. BASS‑II flames always quenched when the fan was turned off, and ACME BRE fuels self‑extinguished in still air below about 25% O₂. Above that oxygen level, still air is no longer a safety margin.</p>`);
+    out.push(`<p><span class="flag warn">Airflow</span>Near‑still air (${state.flow} cm/s). Without buoyancy, a flame here is fed only by diffusion. In BASS‑II tests, flames quenched when the fan was turned off, and ACME BRE fuels self‑extinguished in still air below about 25% O₂. Above that oxygen level, still air is no longer a safety margin.</p>`);
   } else {
-    out.push(`<p><span class="flag warn">Airflow</span>At ${state.flow} cm/s, cabin ventilation is in the range where BASS and Saffire saw solids burn steadily in microgravity (Saffire ran at 20–30 cm/s). BASS‑II flames quenched when the fan stopped, so fan shutdown is a first response. Materials can also burn at lower oxygen in microgravity than in 1 g ground tests.</p>`);
+    out.push(`<p><span class="flag warn">Airflow</span>At ${state.flow} cm/s, cabin ventilation is in the range where BASS and Saffire saw solids burn steadily in microgravity (Saffire ran at 20–30 cm/s). In BASS‑II tests, flames quenched when the fan stopped, which supports ventilation shutdown during fire response for those conditions. BASS‑II also found materials can burn at lower oxygen in microgravity than in 1 g ground tests.</p>`);
   }
   // gravity
   if(g>0&&g<1){
-    out.push(`<p><span class="flag crit">Gap</span>PSI has no partial‑gravity combustion data. At ${g===.166?"lunar":"Mars"} gravity, behaviour should fall between the microgravity records here and normal‑gravity tests. ACME E‑FIELD, which mimics a weak body force with an electric field, is the nearest proxy until LUCI and FM2 data arrive.</p>`);
+    out.push(`<p><span class="flag crit">Gap</span>PSI has no partial‑gravity combustion data. Microgravity and 1 g results are useful reference cases, but combustion is nonlinear, so ${g===.166?"lunar":"Mars"}‑gravity behaviour cannot be assumed to sit between them. ACME E‑FIELD reproduces some body‑force effects on flame ions, not all gravity‑driven transport. Dedicated experiments (LUCI, FM2) are needed.</p>`);
   } else if(g===1){
     out.push(`<p><span class="flag ok">Earth</span>Most transferable results: smoke particle data from SAME and SAME‑R for detector design, and FLEX diluent data for gaseous suppression systems. ISS fine‑water‑mist extinguisher work also applies on Earth.</p>`);
   }
@@ -652,7 +670,7 @@ render(); requestAnimationFrame(tick); addEventListener("resize",()=>renderStage
   function renderModel(){
     const n=nearest(); if(!n)return;
     $("#xd").textContent=n.d.toFixed(2); $("#xn").textContent=n.i.name;
-    $("#xtxt").textContent=n.d===0?"Your habitat sits inside a tested envelope: models can interpolate.":n.d<1?"Close to tested conditions: models extrapolate a short way.":"Far from any tested condition: model predictions here are unvalidated.";
+    $("#xtxt").textContent=n.d===0?"Each variable falls inside a published range; check whether that combination was actually tested.":n.d<1?"Close to published test envelopes.":"Outside published test envelopes: any model here would be extrapolating.";
   }
   $("#equip").innerHTML=EQUIP.map(e=>`<p><span class="flag ok">${e.g}</span>${e.items.map(([t,ids])=>`${t} ${ids.map(id=>{const i=INV.find(x=>x.id===id);return i?`<span class="cite">${i.name}</span>`:""}).join(" ")}`).join("<br>")}</p>`).join("");
   $("#csvBtn").onclick=()=>{
